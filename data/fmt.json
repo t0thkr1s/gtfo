@@ -1,0 +1,20 @@
+{
+  "description": "The read file content is not binary-safe.",
+  "functions": {
+    "file-read": [
+      {
+        "code": "fmt -p NON_EXISTING_PREFIX [file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./fmt -p NON_EXISTING_PREFIX [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo fmt -p NON_EXISTING_PREFIX [file]\n"
+      }
+    ]
+  }
+}

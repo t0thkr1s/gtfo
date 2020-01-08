@@ -1,0 +1,26 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "ftp\n!/bin/sh\n"
+      }
+    ],
+    "file-upload": [
+      {
+        "description": "Send local file to a FTP server.",
+        "code": "ftp [host]\nput [file]\n"
+      }
+    ],
+    "file-download": [
+      {
+        "description": "Fetch a remote file from a FTP server.",
+        "code": "ftp [host]\nget [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo ftp\n!/bin/sh\n"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "description": "The read file content is corrupted by replacing tabs with spaces.",
+  "functions": {
+    "file-read": [
+      {
+        "code": "expand \"[file]\"\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./expand \"[file]\"\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo expand \"[file]\"\n"
+      }
+    ]
+  }
+}

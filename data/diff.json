@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "file-read": [
+      {
+        "code": "diff --line-format=%L /dev/null [file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./diff --line-format=%L /dev/null [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo diff --line-format=%L /dev/null [file]\n"
+      }
+    ]
+  }
+}

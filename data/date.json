@@ -1,0 +1,20 @@
+{
+  "description": "Each line is corrupted by a prefix string and wrapped inside quotes, so this may not be suitable for binary files. This only works for the GNU variant of 'date'.",
+  "functions": {
+    "file-read": [
+      {
+        "code": "date -f [file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./date -f [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo date -f [file]\n"
+      }
+    ]
+  }
+}

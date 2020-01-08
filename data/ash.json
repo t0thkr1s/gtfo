@@ -1,0 +1,24 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "ash"
+      }
+    ],
+    "file-write": [
+      {
+        "code": "ash -c 'echo DATA > [file]'\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./ash"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo ash"
+      }
+    ]
+  }
+}

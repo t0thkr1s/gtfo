@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "file-read": [
+      {
+        "code": "cut -d \"\" -f1 [file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./cut -d \"\" -f1 [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo cut -d \"\" -f1 [file]\n"
+      }
+    ]
+  }
+}

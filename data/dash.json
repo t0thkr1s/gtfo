@@ -1,0 +1,24 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "dash"
+      }
+    ],
+    "file-write": [
+      {
+        "code": "dash -c 'echo DATA > [file]'\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./dash -p"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo dash"
+      }
+    ]
+  }
+}

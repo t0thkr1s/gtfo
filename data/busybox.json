@@ -1,0 +1,37 @@
+{
+  "description": "BusyBox may contain many UNIX utilities, run 'busybox --list-full' to check what GTFBins binaries are supported. Here some example.",
+  "functions": {
+    "shell": [
+      {
+        "code": "busybox sh"
+      }
+    ],
+    "file-upload": [
+      {
+        "description": "Serve files in the local folder running an HTTP server.",
+        "code": "busybox httpd -f -p [port] -h .\n"
+      }
+    ],
+    "file-write": [
+      {
+        "code": "busybox sh -c 'echo \"DATA\" > [file]'\n"
+      }
+    ],
+    "file-read": [
+      {
+        "code": "./busybox cat [file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "description": "It may drop the SUID privileges depending on the compilation flags and the runtime configuration.",
+        "code": "./busybox sh"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo busybox sh"
+      }
+    ]
+  }
+}

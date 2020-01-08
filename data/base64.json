@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "file-read": [
+      {
+        "code": "base64 [file] | base64 --decode\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./base64 [file] | base64 --decode\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo base64 [file] | base64 --decode\n"
+      }
+    ]
+  }
+}

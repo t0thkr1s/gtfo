@@ -39,13 +39,13 @@ def main(binary):
     file_path = data_dir + binary + json_ext
     if os.path.isfile(file_path):
         print(info.safe_substitute(text="Supplied binary: " + binary))
-        print(info.safe_substitute(text="Please wait, loading data ... \n"))
+        print(info.safe_substitute(text="Please wait, loading data ... "))
         with open(file_path) as source:
             data = source.read()
 
         json_data = json.loads(data)
         if 'description' in json_data:
-            print(description.safe_substitute(description=json_data['description']))
+            print('\n' + description.safe_substitute(description=json_data['description']))
 
         for vector in json_data['functions']:
             print(title.safe_substitute(title=str(vector).upper()))

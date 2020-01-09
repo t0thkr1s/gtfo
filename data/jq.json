@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "file-read": [
+      {
+        "code": "jq -Rr . [file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./jq -Rr . [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo jq -Rr . [file]\n"
+      }
+    ]
+  }
+}

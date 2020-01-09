@@ -3,17 +3,24 @@
   "functions": {
     "file-read": [
       {
-        "code": "fmt -p NON_EXISTING_PREFIX [file]\n"
+        "description": "This only works for the GNU version of `fmt`.",
+        "code": "fmt -pNON_EXISTING_PREFIX [file]\n"
+      },
+      {
+        "description": "This corrupts the output by wrapping very long lines at the given width.",
+        "code": "fmt -999 [file]\n"
       }
     ],
     "suid": [
       {
-        "code": "./fmt -p NON_EXISTING_PREFIX [file]\n"
+        "description": "This corrupts the output by wrapping very long lines at the given width.",
+        "code": "./fmt -999 [file]\n"
       }
     ],
     "sudo": [
       {
-        "code": "sudo fmt -p NON_EXISTING_PREFIX [file]\n"
+        "description": "This corrupts the output by wrapping very long lines at the given width.",
+        "code": "sudo fmt -999 [file]\n"
       }
     ]
   }

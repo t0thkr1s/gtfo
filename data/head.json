@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "file-read": [
+      {
+        "code": "head -c1G [file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./head -c1G [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo head -c1G [file]\n"
+      }
+    ]
+  }
+}

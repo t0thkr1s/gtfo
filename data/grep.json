@@ -1,0 +1,20 @@
+{
+  "description": "There are many 'grep' flavors that in many cases are just copies, symlinks or wrappers around the original binary that may share the same behavior, for example: 'egrep', 'fgrep', 'zgrep', etc.\n",
+  "functions": {
+    "file-read": [
+      {
+        "code": "grep '' [file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./grep '' [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo grep '' [file]\n"
+      }
+    ]
+  }
+}

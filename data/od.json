@@ -1,0 +1,20 @@
+{
+  "description": "Three spaces are added before each character in the read file, and non-printable chars are printed as backslash escape sequences.",
+  "functions": {
+    "file-read": [
+      {
+        "code": "od -An -c -w9999 [file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./od -An -c -w9999 [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo od -An -c -w9999 [file]\n"
+      }
+    ]
+  }
+}

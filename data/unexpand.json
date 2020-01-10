@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "file-read": [
+      {
+        "code": "unexpand -t99999999 [file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./unexpand -t99999999 [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo unexpand -t99999999 [file]\n"
+      }
+    ]
+  }
+}

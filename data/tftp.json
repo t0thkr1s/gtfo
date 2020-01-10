@@ -1,0 +1,28 @@
+{
+  "functions": {
+    "file-upload": [
+      {
+        "description": "Send local file to a TFTP server.",
+        "code": "tftp [host]\nput [file]\n"
+      }
+    ],
+    "file-download": [
+      {
+        "description": "Fetch a remote file from a TFTP server.",
+        "code": "tftp [host]\nget [file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "description": "Send local file to a TFTP server.",
+        "code": "./tftp [host]\nput [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "description": "Send local file to a TFTP server.",
+        "code": "sudo -E tftp [host]\nput [file]\n"
+      }
+    ]
+  }
+}

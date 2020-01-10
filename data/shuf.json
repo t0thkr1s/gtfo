@@ -1,0 +1,18 @@
+{
+  "description": "The read file content is corrupted by adding a newline.",
+  "functions": {
+    "file-write": [
+      {
+        "code": "shuf -e DATA -o [file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./shuf -e DATA -o [file]\nsudo:\n"
+      },
+      {
+        "code": "sudo shuf -e DATA -o [file]\n"
+      }
+    ]
+  }
+}

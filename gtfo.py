@@ -4,6 +4,7 @@ import argparse
 import json
 import os
 from string import Template
+
 from colorama import Fore, Style
 from pygments import highlight, formatters, lexers
 
@@ -65,6 +66,7 @@ def main(binary):
 
 
 if __name__ == '__main__':
+    os.system('cls' if os.name == 'nt' else 'clear')
     print(banner)
     args = parse_args()
     main(binary=args.binary)

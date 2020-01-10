@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "file-read": [
+      {
+        "code": "sort -m [file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./sort -m [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo sort -m [file]\n"
+      }
+    ]
+  }
+}

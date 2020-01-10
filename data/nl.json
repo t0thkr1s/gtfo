@@ -1,0 +1,20 @@
+{
+  "description": "The read file content is corrupted by a leading space added to each line.",
+  "functions": {
+    "file-read": [
+      {
+        "code": "nl -bn -w1 -s '' [file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./nl -bn -w1 -s '' [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo nl -bn -w1 -s '' [file]\n"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "description": "Read and write files limited to the current directory.",
+  "functions": {
+    "file-write": [
+      {
+        "code": "red [file]\na\nDATA\n.\nw\nq\n"
+      }
+    ],
+    "file-read": [
+      {
+        "code": "red [file]\n,p\nq\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo red [file]\na\nDATA\n.\nw\nq\n"
+      }
+    ]
+  }
+}

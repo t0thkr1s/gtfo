@@ -1,0 +1,20 @@
+{
+  "description": "It can only append data if the destination exists.",
+  "functions": {
+    "file-write": [
+      {
+        "code": "echo DATA | ./tee -a [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "echo DATA | sudo tee -a [file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "echo DATA | ./tee -a [file]\n"
+      }
+    ]
+  }
+}

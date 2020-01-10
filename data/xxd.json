@@ -1,0 +1,24 @@
+{
+  "functions": {
+    "file-write": [
+      {
+        "code": "echo DATA | xxd | xxd -r - [file]\n"
+      }
+    ],
+    "file-read": [
+      {
+        "code": "xxd [file] | xxd -r\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./xxd [file] | xxd -r\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo xxd [file] | xxd -r\n"
+      }
+    ]
+  }
+}

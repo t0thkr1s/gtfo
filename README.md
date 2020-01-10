@@ -35,9 +35,13 @@ python3 setup.py install
 python3 gtfo.py [binary]
 ```
 
-## Example
+## Screenshots
 
-![Example](https://i.imgur.com/GvEh2LA.png)
+
+Screenshot 1             |  Screenshot 2
+:-----------------------:|:-----------------------:
+![Screenshot1](https://i.imgur.com/1EzFiGQ.png)  |  ![Screenshot2](https://i.imgur.com/icgmDct.png)
+
 
 ### Disclaimer
 

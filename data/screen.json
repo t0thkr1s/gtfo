@@ -1,0 +1,24 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "screen"
+      }
+    ],
+    "file-write": [
+      {
+        "description": "This works on screen version 4.06.02. Data is appended to the file and '\\n' is converted to '\\r\\n'.",
+        "code": "screen -L -Logfile [file] echo DATA\n"
+      },
+      {
+        "description": "This works on screen version 4.05.00. Data is appended to the file and '\\n' is converted to '\\r\\n'.",
+        "code": "screen -L [file] echo DATA\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo screen"
+      }
+    ]
+  }
+}

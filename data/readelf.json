@@ -1,0 +1,20 @@
+{
+  "description": "Each line is corrupted by a prefix string and wrapped inside single quotes. Also consider that lines are actually parsed as `readelf` options thus some file contents may lead to unexpected results.\n",
+  "functions": {
+    "file-read": [
+      {
+        "code": "readelf -a @[file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./readelf -a @[file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo readelf -a @[file]\n"
+      }
+    ]
+  }
+}

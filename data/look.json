@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "file-read": [
+      {
+        "code": "look '' \"[file]\"\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./look '' \"[file]\"\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo look '' \"[file]\"\n"
+      }
+    ]
+  }
+}

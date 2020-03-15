@@ -1,0 +1,15 @@
+{
+  "description": "The output is placed inside the ISO9660 file system binary format thus it may not be suitable for binary content.",
+  "functions": {
+    "file-read": [
+      {
+        "code": "genisoimage -q -o - \"[file]\"\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo genisoimage -q -o - \"[file]\"\n"
+      }
+    ]
+  }
+}

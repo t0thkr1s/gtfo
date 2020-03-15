@@ -1,0 +1,21 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "description": "This invokes the default pager, which is likely to be 'less', other functions may apply.",
+        "code": "crash -h\n!sh\n"
+      }
+    ],
+    "command": [
+      {
+        "code": "CRASHPAGER=\"[command]\" crash -h\n"
+      }
+    ],
+    "sudo": [
+      {
+        "description": "This invokes the default pager, which is likely to be 'less', other functions may apply.",
+        "code": "sudo crash -h\n!sh\n"
+      }
+    ]
+  }
+}

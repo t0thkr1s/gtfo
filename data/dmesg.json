@@ -1,8 +1,20 @@
 {
-  "description": "This invokes the default pager, which is likely to be 'less', other functions may apply.\n",
   "functions": {
+    "file-read": [
+      {
+        "description": "This is not suitable for binary files.",
+        "code": "dmesg -rF \"[file]\"\n"
+      }
+    ],
+    "shell": [
+      {
+        "description": "This invokes the default pager, which is likely to be 'less', other functions may apply.",
+        "code": "dmesg -H\n!/bin/sh\n"
+      }
+    ],
     "sudo": [
       {
+        "description": "This invokes the default pager, which is likely to be 'less', other functions may apply.",
         "code": "sudo dmesg -H\n!/bin/sh\n"
       }
     ]

@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "file-read": [
+      {
+        "code": "base32 \"[file]\" | base32 --decode\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "base32 \"[file]\" | base32 --decode\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo base32 \"[file]\" | base32 --decode\n"
+      }
+    ]
+  }
+}

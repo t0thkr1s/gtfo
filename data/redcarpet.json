@@ -1,0 +1,15 @@
+{
+  "description": "The file is actually parsed as a Markdown file.",
+  "functions": {
+    "file-read": [
+      {
+        "code": "redcarpet \"[file]\"\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo redcarpet \"[file]\"\n"
+      }
+    ]
+  }
+}

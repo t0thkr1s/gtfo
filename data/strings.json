@@ -1,0 +1,20 @@
+{
+  "description": "This only returns ASCII strings, thus it is not suitable for binary files.",
+  "functions": {
+    "file-read": [
+      {
+        "code": "strings \"[file]\"\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./strings \"[file]\"\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo strings \"[file]\"\n"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "description": "The content is actually parsed and corrupted by the command, thus it may not be suitable for arbitrary files.",
+  "functions": {
+    "file-read": [
+      {
+        "code": "soelim \"[file]\"\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./soelim \"[file]\"\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo soelim \"[file]\"\n"
+      }
+    ]
+  }
+}

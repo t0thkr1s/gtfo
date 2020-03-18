@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "file-read": [
+      {
+        "code": "highlight --no-doc --failsafe \"[file]\"\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./highlight --no-doc --failsafe \"[file]\"\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo highlight --no-doc --failsafe \"[file]\"\n"
+      }
+    ]
+  }
+}

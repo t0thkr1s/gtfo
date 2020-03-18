@@ -1,17 +1,27 @@
 {
-  "description": "The read file content is corrupted by adding a newline.",
   "functions": {
+    "file-read": [
+      {
+        "description": "The read file content is corrupted by randomizing the order of NUL terminated strings.",
+        "code": "shuf -z \"[file]\"\n"
+      }
+    ],
     "file-write": [
       {
-        "code": "shuf -e DATA -o [file]\n"
+        "description": "The written file content is corrupted by adding a newline.",
+        "code": "shuf -e DATA -o \"[file]\"\n"
       }
     ],
     "suid": [
       {
-        "code": "./shuf -e DATA -o [file]\nsudo:\n"
-      },
+        "description": "The written file content is corrupted by adding a newline.",
+        "code": "./shuf -e DATA -o \"[file]\"\n"
+      }
+    ],
+    "sudo": [
       {
-        "code": "sudo shuf -e DATA -o [file]\n"
+        "description": "The written file content is corrupted by adding a newline.",
+        "code": "sudo shuf -e DATA -o \"[file]\"\n"
       }
     ]
   }

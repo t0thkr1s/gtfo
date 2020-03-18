@@ -1,0 +1,20 @@
+{
+  "description": "The output is a hex dump.",
+  "functions": {
+    "file-read": [
+      {
+        "code": "hd \"[file]\"\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./hd \"[file]\"\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo hd \"[file]\"\n"
+      }
+    ]
+  }
+}

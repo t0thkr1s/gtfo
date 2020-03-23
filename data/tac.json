@@ -1,0 +1,20 @@
+{
+  "description": "Make sure that 'RANDOM' does not appear into the file to read otherwise the content of the file is corrupted by reversing the order of 'RANDOM'-separated chunks.",
+  "functions": {
+    "file-read": [
+      {
+        "code": "tac -s 'RANDOM' \"[file]\"\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./tac -s 'RANDOM' \"[file]\"\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo tac -s 'RANDOM' \"[file]\"\n"
+      }
+    ]
+  }
+}

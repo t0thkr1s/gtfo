@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "file-read": [
+      {
+        "code": "xz -c \"[file]\" | xz -d\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./xz -c \"[file]\" | xz -d\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo xz -c \"[file]\" | xz -d\n"
+      }
+    ]
+  }
+}

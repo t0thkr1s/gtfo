@@ -21,7 +21,7 @@
     "sudo": [
       {
         "description": "Fetch a remote file via HTTP GET request.",
-        "code": "sudo -E wget [url] -O [file]\n"
+        "code": "sudo wget [url] -O [file]\n"
       }
     ]
   }

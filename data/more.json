@@ -17,7 +17,7 @@
     ],
     "sudo": [
       {
-        "code": "TERM= sudo -E more /etc/profile\n!/bin/sh\n"
+        "code": "TERM= sudo more /etc/profile\n!/bin/sh\n"
       }
     ]
   }

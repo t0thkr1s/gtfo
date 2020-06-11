@@ -13,7 +13,7 @@
     ],
     "sudo": [
       {
-        "code": "sudo -E lwp-download [url] [file]\n"
+        "code": "sudo lwp-download [url] [file]\n"
       }
     ]
   }

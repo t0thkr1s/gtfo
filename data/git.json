@@ -13,6 +13,12 @@
         "code": "TF=$(mktemp -d)\ngit init \"$TF\"\necho 'exec /bin/sh 0<&2 1>&2' >\"$TF/.git/hooks/pre-commit.sample\"\nmv \"$TF/.git/hooks/pre-commit.sample\" \"$TF/.git/hooks/pre-commit\"\ngit -C \"$TF\" commit --allow-empty -m x\n"
       }
     ],
+    "file-read": [
+      {
+        "description": "The read file content is displayed in `diff` style output format.",
+        "code": "git diff /dev/null [file]\n"
+      }
+    ],
     "sudo": [
       {
         "code": "sudo PAGER='sh -c \"exec sh 0<&1\"' git -p help"

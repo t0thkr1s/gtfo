@@ -1,7 +1,7 @@
 # gtfo
 
 [![made-with-python](http://forthebadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
-[![built-with-love](http://forthebadge.com/images/badges/built-with-love.svg)](https://gitHub.com/t0thkr1s/)
+[![built-with-love](http://forthebadge.com/images/badges/built-with-love.svg)](https://github.com/t0thkr1s/)
 
 This is a standalone script written in Python 3 for [GTFOBins](https://github.com/GTFOBins/GTFOBins.github.io).
 You can search for Unix binaries that can be exploited to bypass system security restrictions.

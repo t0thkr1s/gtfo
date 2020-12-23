@@ -1,14 +1,14 @@
 {
-  "description": "This can be run with elevated privileges to change permissions and then read, write, or execute a file.",
+  "description": "This can be run with elevated privileges to change permissions ('6' denotes the SUID bits) and then read, write, or execute a file.",
   "functions": {
     "suid": [
       {
-        "code": "./chmod 0777 [file]\n"
+        "code": "./chmod 6777 [file]\n"
       }
     ],
     "sudo": [
       {
-        "code": "sudo chmod 0777 [file]\n"
+        "code": "sudo chmod 6777 [file]\n"
       }
     ]
   }

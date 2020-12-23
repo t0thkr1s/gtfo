@@ -1,0 +1,20 @@
+{
+  "description": "Some bytes are altered so it might not be suitable for binary files.",
+  "functions": {
+    "file-read": [
+      {
+        "code": "pr -T [file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "pr -T [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "pr -T [file]\n"
+      }
+    ]
+  }
+}

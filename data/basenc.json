@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "file-read": [
+      {
+        "code": "basenc --base64 [file] | basenc -d --base64\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "basenc --base64 [file] | basenc -d --base64\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo basenc --base64 [file] | basenc -d --base64\n"
+      }
+    ]
+  }
+}

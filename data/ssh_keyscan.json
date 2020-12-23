@@ -1,0 +1,20 @@
+{
+  "description": "The file content is actually parsed so only a part of each line is returned as a part of an error message.\n",
+  "functions": {
+    "file-read": [
+      {
+        "code": "ssh-keyscan -f [file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./ssh-keyscan -f [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo ssh-keyscan -f [file]\n"
+      }
+    ]
+  }
+}

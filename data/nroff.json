@@ -1,5 +1,11 @@
 {
   "functions": {
+    "file-read": [
+      {
+        "description": "The file is typeset and some warning messages may appear.",
+        "code": "nroff [file]\n"
+      }
+    ],
     "shell": [
       {
         "code": "TF=$(mktemp -d)\necho '#!/bin/sh' > $TF/groff\necho '/bin/sh' >> $TF/groff\nchmod +x $TF/groff\nGROFF_BIN_PATH=$TF nroff\n"

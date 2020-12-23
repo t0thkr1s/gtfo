@@ -1,0 +1,31 @@
+{
+  "functions": {
+    "file-read": [
+      {
+        "code": "TF=$(mktemp)\nsplit [file] $TF\ncat $TF*\n"
+      }
+    ],
+    "command": [
+      {
+        "description": "Command execution using an existing or newly created file.",
+        "code": "TF=$(mktemp)\nsplit --filter=[command] $TF\n"
+      },
+      {
+        "description": "Command execution using stdin (and close it directly).",
+        "code": "echo | split --filter=[command] /dev/stdin\n"
+      }
+    ],
+    "shell": [
+      {
+        "description": "The shell prompt is not printed.",
+        "code": "split --filter=/bin/sh /dev/stdin\n"
+      }
+    ],
+    "sudo": [
+      {
+        "description": "The shell prompt is not printed.",
+        "code": "split --filter=/bin/sh /dev/stdin\n"
+      }
+    ]
+  }
+}

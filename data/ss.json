@@ -1,0 +1,20 @@
+{
+  "description": "The file content is actually parsed so only a part of the first line is returned as a part of an error message.\n",
+  "functions": {
+    "file-read": [
+      {
+        "code": "ss -a -F [file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./ss -a -F [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo ss -a -F [file]\n"
+      }
+    ]
+  }
+}

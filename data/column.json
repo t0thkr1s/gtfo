@@ -1,0 +1,20 @@
+{
+  "description": "'column' expects textual data.\n",
+  "functions": {
+    "file-read": [
+      {
+        "code": "column [file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./column [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo column [file]\n"
+      }
+    ]
+  }
+}

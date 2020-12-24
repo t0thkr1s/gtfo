@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "file-read": [
+      {
+        "code": "rev [file] | rev\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./rev [file] | rev\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo rev [file] | rev\n"
+      }
+    ]
+  }
+}

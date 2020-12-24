@@ -1,0 +1,17 @@
+{
+  "description": "This is the 'check_by_ssh' Nagios plugin, available e.g. in '/usr/lib/nagios/plugins/'.\n",
+  "functions": {
+    "command": [
+      {
+        "description": "The host example.net must return a certificate via TLS",
+        "code": "TF=$(mktemp)\necho \"[command] | tee [file]\" > $TF\nchmod +x $TF\ncheck_ssl_cert --curl-bin $TF -H example.net\ncat [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "description": "The host example.net must return a certificate via TLS",
+        "code": "TF=$(mktemp)\necho \"[command] | tee [file]\" > $TF\nchmod +x $TF\numask 022\ncheck_ssl_cert --curl-bin $TF -H example.net\ncat [file]\n"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "description": "The read file content is corrupted by error prints.\n",
+  "functions": {
+    "file-read": [
+      {
+        "code": "xmodmap -v [file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./xmodmap -v [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo xmodmap -v [file]\n"
+      }
+    ]
+  }
+}

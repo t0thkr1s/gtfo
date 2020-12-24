@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "file-read": [
+      {
+        "code": "csplit [file] 1\ncat xx01\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "csplit [file] 1\ncat xx01\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "csplit [file] 1\ncat xx01\n"
+      }
+    ]
+  }
+}

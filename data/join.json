@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "file-read": [
+      {
+        "code": "join -a 2 /dev/null [file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "join -a 2 /dev/null [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo join -a 2 /dev/null [file]\n"
+      }
+    ]
+  }
+}

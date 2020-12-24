@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "file-read": [
+      {
+        "code": "paste [file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "paste [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo paste [file]\n"
+      }
+    ]
+  }
+}

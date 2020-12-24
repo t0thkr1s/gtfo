@@ -1,0 +1,20 @@
+{
+  "description": "The read file content is corrupted by additional text at the beginning.\n",
+  "functions": {
+    "file-read": [
+      {
+        "code": "tbl [file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./tbl [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo tbl [file]\n"
+      }
+    ]
+  }
+}

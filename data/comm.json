@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "file-read": [
+      {
+        "code": "comm [file] /dev/null 2>/dev/null\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "comm [file] /dev/null 2>/dev/null\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo comm [file] /dev/null 2>/dev/null\n"
+      }
+    ]
+  }
+}

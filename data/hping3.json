@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "hping3\n/bin/sh\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./hping3\n/bin/sh\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo hping3\n/bin/sh\n"
+      }
+    ]
+  }
+}

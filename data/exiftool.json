@@ -1,0 +1,20 @@
+{
+  "description": "If the permissions allow it, files are moved (instead of copied) to the destination.\n",
+  "functions": {
+    "file-read": [
+      {
+        "code": "exiftool -filename=[output] [file]\ncat [output]\n"
+      }
+    ],
+    "file-write": [
+      {
+        "code": "exiftool -filename=[file] [input]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo exiftool -filename=[file] [input]\n"
+      }
+    ]
+  }
+}

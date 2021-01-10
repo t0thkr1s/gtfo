@@ -1,0 +1,20 @@
+{
+  "description": "Each input line is treated as a lookup query for the 'dig' command and the output is corrupted with the result or errors of the operation, so this may not be suitable for binary files. Grepping for 'DiG' might help to filter out unwanted content.",
+  "functions": {
+    "file-read": [
+      {
+        "code": "dig -f [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo dig -f [file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./dig -f [file]\n"
+      }
+    ]
+  }
+}

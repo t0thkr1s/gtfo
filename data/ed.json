@@ -15,6 +15,11 @@
         "code": "ed [file]\n,p\nq\n"
       }
     ],
+    "suid": [
+      {
+        "code": "./ed [file]\n,p\nq\n"
+      }
+    ],
     "sudo": [
       {
         "code": "sudo ed\n!/bin/sh\n"

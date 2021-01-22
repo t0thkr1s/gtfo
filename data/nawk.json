@@ -27,6 +27,11 @@
         "code": "nawk '//' \"[file]\"\n"
       }
     ],
+    "suid": [
+      {
+        "code": "./nawk '//' \"[file]\""
+      }
+    ],
     "sudo": [
       {
         "code": "sudo nawk 'BEGIN {system(\"/bin/sh\")}'"

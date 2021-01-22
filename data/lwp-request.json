@@ -5,14 +5,14 @@
         "code": "lwp-request \"file://[file]\"\n"
       }
     ],
-    "suid": [
-      {
-        "code": "./lwp-request \"file://[file]\"\n"
-      }
-    ],
     "sudo": [
       {
         "code": "sudo lwp-request \"file://[file]\"\n"
+      }
+    ],
+    "limited-suid": [
+      {
+        "code": "./lwp-request \"file://[file]\"\n"
       }
     ]
   }

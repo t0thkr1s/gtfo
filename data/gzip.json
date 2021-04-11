@@ -4,6 +4,9 @@
     "file-read": [
       {
         "code": "gzip -f [file] -t\n"
+      },
+      {
+        "code": "gzip -c [file] | gzip -d\n"
       }
     ],
     "suid": [

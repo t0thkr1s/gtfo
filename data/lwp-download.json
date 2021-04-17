@@ -6,11 +6,6 @@
         "code": "lwp-download [url] [file]\n"
       }
     ],
-    "suid": [
-      {
-        "code": "./lwp-download [url] [file]\n"
-      }
-    ],
     "sudo": [
       {
         "code": "sudo lwp-download [url] [file]\n"

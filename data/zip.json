@@ -1,5 +1,10 @@
 {
   "functions": {
+    "file-read": [
+      {
+        "code": "TF=$(mktemp -u)\nzip $TF [file]\nunzip -p $TF\n"
+      }
+    ],
     "shell": [
       {
         "code": "TF=$(mktemp -u)\nzip $TF /etc/hosts -T -TT 'sh #'\nrm $TF\n"

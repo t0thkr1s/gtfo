@@ -9,11 +9,6 @@
       {
         "code": "sudo lwp-request \"file://[file]\"\n"
       }
-    ],
-    "limited-suid": [
-      {
-        "code": "./lwp-request \"file://[file]\"\n"
-      }
     ]
   }
 }

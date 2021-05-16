@@ -6,6 +6,18 @@
         "code": "wget --post-file=[file] [url]\n"
       }
     ],
+    "file-read": [
+      {
+        "description": "The file to be read is treated as a list of URLs, one per line, which are actually fetched by 'wget'. The content appears, somewhat modified, as error messages, thus this is not suitable to read arbitrary binary data.",
+        "code": "wget -i [file]\n"
+      }
+    ],
+    "file-write": [
+      {
+        "description": "The data to be written is treated as a list of URLs, one per line, which are actually fetched by 'wget'. The data is written, somewhat modified, as error messages, thus this is not suitable to write arbitrary binary data.",
+        "code": "TF=$(mktemp)\necho [data] > $TF\nwget -i $TF -o [file]\n"
+      }
+    ],
     "file-download": [
       {
         "description": "Fetch a remote file via HTTP GET request.",

@@ -3,7 +3,7 @@ requires = ["setuptools>=45", "wheel", "setuptools_scm[toml]>=6.2"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "gtfobins"
+name = "gtfobins-cli"
 version = "1.0.0"
 authors = [
     {name = "t0thkr1s", email = "t0thkr1s@icloud.com"},

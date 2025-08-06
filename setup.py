@@ -5,7 +5,7 @@ this_directory = Path(__file__).parent
 long_description = (this_directory / "README.md").read_text()
 
 setup(
-    name='gtfobins',
+    name='gtfobins-cli',
     version='1.0.0',
     url='https://github.com/t0thkr1s/gtfo',
     author='t0thkr1s',

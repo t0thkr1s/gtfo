@@ -3,10 +3,14 @@
 import argparse
 import json
 import os
+from pathlib import Path
 from string import Template
 
-from colorama import Fore, Style
+from colorama import Fore, Style, init
 from pygments import highlight, formatters, lexers
+
+# Initialize colorama for Windows compatibility
+init(autoreset=True)
 
 banner = '''
          __    ___        __    _
@@ -16,7 +20,9 @@ banner = '''
 /___/
 '''
 
-data_dir = "data/"
+# Get the absolute path to the data directory
+PACKAGE_DIR = Path(__file__).parent
+data_dir = PACKAGE_DIR / "data"
 json_ext = ".json"
 
 info = Template(Style.BRIGHT + '[ ' + Fore.GREEN + '*' + Fore.RESET + ' ] ' + Style.RESET_ALL + '$text')
@@ -29,17 +35,24 @@ divider = '\n' + Style.BRIGHT + ' - ' * 10 + Style.RESET_ALL + '\n'
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(usage="python3 gtfo.py [binary]",
-                                     description="Command-line program for GTFOBins. "
-                                                 "It helps you to bypass system security restrictions. Version 1.0")
-    parser.add_argument('-v', '--version', action='version', version='%(prog)s 1.0')
-    parser.add_argument('binary', metavar='[binary]', action='store', help='specifies the binary file')
+    from . import __version__
+    parser = argparse.ArgumentParser(
+        prog="gtfo",
+        description="Command-line tool for GTFOBins - helps you bypass system security restrictions."
+    )
+    parser.add_argument('-v', '--version', action='version', version=f'%(prog)s {__version__}')
+    parser.add_argument('binary', metavar='binary', help='Unix binary to search for exploitation techniques')
     return parser.parse_args()
 
 
-def main(binary):
-    file_path = data_dir + binary + json_ext
-    if os.path.isfile(file_path):
+def run(binary=None):
+    """Main function that can be called programmatically"""
+    if binary is None:
+        args = parse_args()
+        binary = args.binary
+    
+    file_path = data_dir / f"{binary}{json_ext}"
+    if file_path.exists():
         print(info.safe_substitute(text="Supplied binary: " + binary))
         print(info.safe_substitute(text="Please wait, loading data ... "))
         with open(file_path) as source:
@@ -66,8 +79,12 @@ def main(binary):
         print(fail.safe_substitute(text="Sorry, couldn't find anything for " + binary))
 
 
-if __name__ == '__main__':
+def main():
+    """Console script entry point"""
     os.system('cls' if os.name == 'nt' else 'clear')
     print(banner)
-    args = parse_args()
-    main(binary=args.binary)
+    run()
+
+
+if __name__ == '__main__':
+    main()

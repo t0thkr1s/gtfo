@@ -1,9 +1,7 @@
 # GTFOBins CLI
 
-
 [![Python](https://img.shields.io/pypi/pyversions/gtfobins-cli.svg)](https://pypi.org/project/gtfobins-cli/)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Build and Publish](https://github.com/t0thkr1s/gtfo/actions/workflows/publish.yml/badge.svg)](https://github.com/t0thkr1s/gtfo/actions/workflows/publish.yml)
 
 ## Overview
 

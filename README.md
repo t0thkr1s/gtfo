@@ -1,7 +1,15 @@
-# GTFOBins CLI
+<div align="center">
 
-[![Python](https://img.shields.io/pypi/pyversions/gtfobins-cli.svg)](https://pypi.org/project/gtfobins-cli/)
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+# 🚀 GTFOBins CLI
+
+[![Python](https://img.shields.io/badge/Python-3.6%2B-blue?style=for-the-badge&logo=python)](https://www.python.org/)
+[![License](https://img.shields.io/badge/License-GPL%20v3-green?style=for-the-badge)](https://github.com/t0thkr1s/gtfobins-cli/blob/master/LICENSE)
+[![Stars](https://img.shields.io/github/stars/t0thkr1s/gtfobins-cli?style=for-the-badge)](https://github.com/t0thkr1s/gtfobins-cli/stargazers)
+
+[![CI Tests](https://github.com/t0thkr1s/revshellgen/workflows/CI%20Tests/badge.svg)](https://github.com/t0thkr1s/gtfobins-cli/actions/workflows/build.yml)
+[![PyPI](https://img.shields.io/pypi/v/revshellgen?style=flat-square)](https://pypi.org/project/gtfobins-cli)
+
+</div>
 
 ## Overview
 

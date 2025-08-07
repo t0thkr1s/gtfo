@@ -6,9 +6,6 @@
 [![License](https://img.shields.io/badge/License-GPL%20v3-green?style=for-the-badge)](https://github.com/t0thkr1s/gtfobins-cli/blob/master/LICENSE)
 [![Stars](https://img.shields.io/github/stars/t0thkr1s/gtfobins-cli?style=for-the-badge)](https://github.com/t0thkr1s/gtfobins-cli/stargazers)
 
-[![CI Tests](https://github.com/t0thkr1s/revshellgen/workflows/CI%20Tests/badge.svg)](https://github.com/t0thkr1s/gtfobins-cli/actions/workflows/build.yml)
-[![PyPI](https://img.shields.io/pypi/v/revshellgen?style=flat-square)](https://pypi.org/project/gtfobins-cli)
-
 </div>
 
 ## Overview
